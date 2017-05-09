@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
     private void init() {
 	// TODO Auto-generated method stub
-	image = new BufferedImage(WIDTH, HEIGHT);
+	image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     }
 
     public GamePanel() {
