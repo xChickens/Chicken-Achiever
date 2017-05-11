@@ -10,9 +10,8 @@ public class Background {
     private Image image;
     private double x;
     private double y;
-    private double dx;
-    private double dy;
     private double moveScale;
+    
 
     public Background(ImageIcon i, double ms) {
 	try {
@@ -26,16 +25,6 @@ public class Background {
     public void setPosition(double x, double y) {
 	this.x = (x * this.moveScale);
 	this.y = (y * this.moveScale);
-    }
-
-    public void setVector(double dx, double dy) {
-	this.dx = dx;
-	this.dy = dy;
-    }
-
-    public void update() {
-	x += dx;
-	y += dy;
     }
 
     public void draw(Graphics2D g) {
