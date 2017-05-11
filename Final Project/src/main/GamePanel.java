@@ -16,8 +16,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     private static final long serialVersionUID = 1L;
 
     // Dimensions
-    public static final int WIDTH = 1024;
-    public static final int HEIGHT = 768;
+    public static final int WIDTH = 512;
+    public static final int HEIGHT = 384;
+    public static final int SCALE = 2;
 
     // Thread
     private Thread thread;
@@ -32,81 +33,88 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     // GSM
     private GameStateManager gsm;
 
-    public void run() {
-	init();
-
-	long start;
-	long elapsed;
-	long wait;
-
-	while (running) {
-	    start = System.nanoTime();
-
-	    update();
-	    draw();
-	    drawToScreen();
-
-	    elapsed = System.nanoTime() - start;
-
-	    wait = targetTime - elapsed / 1000000;
-
-	    try {
-		Thread.sleep(wait);
-	    } catch (Exception e) {
-		e.printStackTrace();
-	    }
-	}
+    public void addNotify()
+    {
+      super.addNotify();
+      if (thread == null)
+      {
+        thread = new Thread(this);
+        addKeyListener(this);
+        thread.start();
+      }
     }
-
-    private void drawToScreen() {
-	Graphics g2 = getGraphics();
-	g2.drawImage(image, 0, 0, null);
-	g2.dispose();
+    
+    private void init()
+    {
+      image = new BufferedImage(1024, 768, 1);
+      
+      g = ((Graphics2D)image.getGraphics());
+      
+      running = true;
+      
+      gsm = new GameStateManager();
     }
-
-    private void draw() {
-	gsm.draw(g);
+    
+    public void run()
+    {
+      init();
+      while (running)
+      {
+        long start = System.nanoTime();
+        
+        update();
+        draw();
+        drawToScreen();
+        
+        long elapsed = System.nanoTime() - start;
+        
+        long wait = targetTime - elapsed / 1000000L;
+        if (wait < 0L) {
+          wait = 5L;
+        }
+        try
+        {
+          Thread.sleep(wait);
+        }
+        catch (Exception e)
+        {
+          e.printStackTrace();
+        }
+      }
     }
-
-    private void update() {
-	gsm.update();
-    }
-
-    private void init() {
-	// TODO Auto-generated method stub
-	image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	g = (Graphics2D) image.getGraphics();
-
-	running = true;
-	
-	gsm = new GameStateManager();
+    
+    private void update()
+    {
+      gsm.update();
     }
 
     public GamePanel() {
-	setPreferredSize(new Dimension(WIDTH, HEIGHT));
+	setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
 	setFocusable(true);
 	requestFocus();
     }
-
-    public void addNotify() {
-	if (thread == null) {
-	    thread = new Thread(this);
-	    addKeyListener(this);
-	    thread.start();
-	}
+    
+    private void draw()
+    {
+      gsm.draw(g);
     }
-
-    public void keyPressed(KeyEvent key) {
-	gsm.keyPressed(key.getKeyCode());
+    
+    private void drawToScreen()
+    {
+      Graphics g2 = getGraphics();
+      g2.drawImage(image, 0, 0, WIDTH*SCALE, HEIGHT*SCALE, null);
+      g2.dispose();
     }
-
-    public void keyReleased(KeyEvent key) {
-	gsm.keyReleased(key.getKeyCode());
+    
+    public void keyTyped(KeyEvent key) {}
+    
+    public void keyPressed(KeyEvent key)
+    {
+      gsm.keyPressed(key.getKeyCode());
     }
-
-    @Override
-    public void keyTyped(KeyEvent key) {
-	// TODO Auto-generated method stub
-
+    
+    public void keyReleased(KeyEvent key)
+    {
+      gsm.keyReleased(key.getKeyCode());
     }
 }

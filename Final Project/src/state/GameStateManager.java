@@ -3,11 +3,11 @@ package state;
 import java.util.ArrayList;
 
 public class GameStateManager{
-    
+    	
     private ArrayList<GameState> gameStates;
     private int currentState;
     
-    public static final int MENUSTATE =0;
+    public static final int MENUSTATE = 0;
     public static final int LEVELSTATE = 1;
     
     public GameStateManager(){

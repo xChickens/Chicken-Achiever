@@ -2,7 +2,6 @@ package map;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 
 
@@ -11,7 +10,6 @@ public class Background {
     private double x;
     private double y;
     private double moveScale;
-    
 
     public Background(ImageIcon i, double ms) {
 	try {
