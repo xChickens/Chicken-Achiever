@@ -1,4 +1,4 @@
-package map;
+package com.chickenachiever.map;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import main.GamePanel;
+import com.chickenachiever.main.GamePanel;
 
 public class TileMap {
 

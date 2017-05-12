@@ -1,10 +1,10 @@
-package state;
-
-import map.Background;
+package com.chickenachiever.state;
 
 import java.awt.Graphics2D;
 
 import javax.swing.ImageIcon;
+
+import com.chickenachiever.map.Background;
 
 public class MenuState extends GameState {
 	private Background bg;

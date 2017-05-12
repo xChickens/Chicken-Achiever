@@ -1,4 +1,4 @@
-package state;
+package com.chickenachiever.state;
 
 import java.awt.Graphics2D;
 

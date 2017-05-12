@@ -1,4 +1,4 @@
-package model;
+package com.chickenachiever.model;
 
 import java.awt.image.BufferedImage;
 

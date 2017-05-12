@@ -1,8 +1,8 @@
-package state;
+package com.chickenachiever.state;
 
 import java.awt.Graphics2D;
 
-import map.TileMap;
+import com.chickenachiever.map.TileMap;
 
 public class LevelState extends GameState {
 

@@ -1,8 +1,8 @@
-package main;
+package com.chickenachiever.main;
 
 import javax.swing.JPanel;
 
-import state.GameStateManager;
+import com.chickenachiever.state.GameStateManager;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

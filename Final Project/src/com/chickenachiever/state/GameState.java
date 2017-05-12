@@ -1,4 +1,4 @@
-package state;
+package com.chickenachiever.state;
 
 public abstract class GameState {
 

@@ -1,4 +1,4 @@
-package map;
+package com.chickenachiever.map;
 
 import java.awt.image.BufferedImage;
 

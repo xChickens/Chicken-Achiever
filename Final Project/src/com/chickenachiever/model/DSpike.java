@@ -1,10 +1,10 @@
-package model;
+package com.chickenachiever.model;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import map.TileMap;
+import com.chickenachiever.map.TileMap;
 
 public class DSpike extends MapElement {
 	private ArrayList<BufferedImage[]> sprites;

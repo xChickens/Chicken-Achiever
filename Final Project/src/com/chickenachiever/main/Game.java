@@ -1,4 +1,4 @@
-package main;
+package com.chickenachiever.main;
 
 import javax.swing.JFrame;
 

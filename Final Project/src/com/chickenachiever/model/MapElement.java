@@ -1,8 +1,8 @@
-package model;
+package com.chickenachiever.model;
 
 import java.awt.Rectangle;
 
-import map.TileMap;
+import com.chickenachiever.map.TileMap;
 
 public abstract class MapElement {
 	
