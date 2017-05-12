@@ -1,6 +1,0 @@
-got here
-java.lang.NullPointerException
-	at javax.swing.ImageIcon.<init>(Unknown Source)
-	at JarPictLoader.<init>(JarPictLoader.java:38)
-	at GuiPictLoader.<init>(GuiPictLoader.java:32)
-	at GuiPictLoader.main(GuiPictLoader.java:107)
