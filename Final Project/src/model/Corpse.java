@@ -1,7 +1,10 @@
 package model;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import map.TileMap;
 
 public class Corpse extends MapElement {
 
@@ -10,4 +13,15 @@ public class Corpse extends MapElement {
 	private static final int IDLE = 0;
 	private static final int MOVING = 1;
 	private static final int FALLING = 2;
+
+	public Corpse(TileMap map) {
+		super(map);
+	}
+
+	public void update() {
+	}
+
+	public void draw(Graphics2D graph) {
+	}
+
 }

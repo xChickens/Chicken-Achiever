@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import main.GamePanel;
+
 public class TileMap {
 
 	// Position
@@ -39,8 +41,8 @@ public class TileMap {
 
 	public TileMap(int tileSize) {
 		this.tileSize = tileSize;
-		numRowsToDraw = (368 / tileSize + 2);
-		numColsToDraw = (512 / tileSize + 2);
+		numRowsToDraw = (GamePanel.HEIGHT / tileSize + 2);
+		numColsToDraw = (GamePanel.WIDTH / tileSize + 2);
 	}
 
 	public void loadTiles(BufferedImage i) {
@@ -71,9 +73,9 @@ public class TileMap {
 			width = (numCols * tileSize);
 			height = (numRows * tileSize);
 
-			xmin = (512 - width);
+			xmin = (GamePanel.WIDTH - width);
 			xmax = 0;
-			ymin = (368 - height);
+			ymin = (GamePanel.HEIGHT - height);
 			ymax = 0;
 
 			String delims = "\\s+";
