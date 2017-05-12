@@ -9,4 +9,34 @@ public class Animation {
 	private long delay;
 	private boolean playedOnce;
 
+	public Animation() {
+		playedOnce = false;
+	}
+
+	public void setFrames(BufferedImage[] frames) {
+
+	}
+
+	public void setDelay(long d) {
+
+	}
+
+	public void update() {
+
+	}
+
+	public int getFrame() {
+		return 0;
+
+	}
+
+	public BufferedImage getImage() {
+		return null;
+
+	}
+
+	public boolean hasPlayedOnce() {
+		return playedOnce;
+
+	}
 }

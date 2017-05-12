@@ -51,7 +51,7 @@ public class TileMap {
 			numTilesAcross = (tileset.getWidth() / tileSize);
 			tiles = new Tile[2][numTilesAcross];
 			for (int col = 0; col < numTilesAcross; col++) {
-				BufferedImage subimage = tileset.getSubimage(col *  tileSize, 0, tileSize, tileSize);
+				BufferedImage subimage = tileset.getSubimage(col * tileSize, 0, tileSize, tileSize);
 
 				tiles[0][col] = new Tile(subimage, 0);
 				subimage = tileset.getSubimage(col * tileSize, tileSize, tileSize, tileSize);
@@ -157,8 +157,7 @@ public class TileMap {
 					int r = rc / numTilesAcross;
 					int c = rc % numTilesAcross;
 
-					g2.drawImage(tiles[r][c].getImage(), (int) x + col * tileSize,
-							(int) y + row * tileSize, null);
+					g2.drawImage(tiles[r][c].getImage(), (int) x + col * tileSize, (int) y + row * tileSize, null);
 				}
 			}
 		}
