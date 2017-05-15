@@ -23,9 +23,9 @@ public class Button {
     public Button(int x, int y, int width, int height, String text) {
 	box = new Rectangle(x, y, width, height);
 	acLs = new ArrayList<ActionListener>();
-	released = new Color(1, 1, 1);
-	hover = new Color(1, 1, 1);
-	pressed = new Color(1, 1, 1);
+	released = new Color(0, 205, 0);
+	hover = new Color(0, 154, 0);
+	pressed = new Color(0, 103, 0);
 	this.text = text;
     }
 
@@ -58,27 +58,27 @@ public class Button {
 	RELEASED, HOVER, PRESSED
     }
 
-    public void mouseClicked(MouseEvent m) {
-	if (box.contains(m.getPoint()))
+    public void mouseClicked(MouseEvent e) {
+	if (box.contains(e.getPoint()))
 	    currentState = State.PRESSED;
     }
 
-    public void mouseDragged(MouseEvent m) {
-	if (box.contains(m.getPoint()))
+    public void mouseDragged(MouseEvent e) {
+	if (box.contains(e.getPoint()))
 	    currentState = State.PRESSED;
 	else
 	    currentState = State.RELEASED;
     }
 
-    public void mouseMoved(MouseEvent m) {
-	if (box.contains(m.getPoint()))
+    public void mouseMoved(MouseEvent e) {
+	if (box.contains(e.getPoint()))
 	    currentState = State.HOVER;
 	else
 	    currentState = State.RELEASED;
     }
 
-    public void mouseReleased(MouseEvent m) {
-	if (box.contains(m.getPoint())) {
+    public void mouseReleased(MouseEvent e) {
+	if (box.contains(e.getPoint())) {
 	    for (ActionListener al : acLs)
 		al.actionPerformed(null);
 	}

@@ -1,6 +1,8 @@
 package com.chickenachiever.state;
 
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 
@@ -28,6 +30,11 @@ public class MenuState extends GameState {
 	quitButton = new Button(GamePanel.WIDTH / 2 - 110, 310, 220, 60, "Quit");
 	creditsButton = new Button(GamePanel.WIDTH / 2 - 110, 400, 220, 60, "Credits");
 
+	quitButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		System.exit(0);
+	    }
+	});
     }
 
     public void init() {

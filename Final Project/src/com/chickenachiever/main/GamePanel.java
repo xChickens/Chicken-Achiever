@@ -81,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		e.printStackTrace();
 	    }
 	}
+	
     }
 
     private void update() {
