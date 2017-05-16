@@ -1,6 +1,6 @@
 package com.chickenachiever.achievements;
 
-public class Achievement {
+public abstract class Achievement {
 	private String name;
 	private Property[] properties;
 	private boolean unlocked;

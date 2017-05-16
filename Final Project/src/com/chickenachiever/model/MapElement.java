@@ -62,6 +62,8 @@ public abstract class MapElement {
 	protected double stopJumpSpeed;
 
 	public MapElement(TileMap tm) {
+		tileMap = tm;
+		tileSize = tm.getTileSize();
 	}
 
 	public boolean intersects(MapElement e) {
