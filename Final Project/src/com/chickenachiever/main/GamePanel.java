@@ -1,15 +1,20 @@
 package com.chickenachiever.main;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JPanel;
 
 import com.chickenachiever.state.GameStateManager;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-
-public class GamePanel extends JPanel implements Runnable, KeyListener {
+public class GamePanel extends JPanel implements Runnable, KeyListener, MouseListener, MouseMotionListener {
     /**
      * 
      */
@@ -38,6 +43,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	if (thread == null) {
 	    thread = new Thread(this);
 	    addKeyListener(this);
+	    addMouseListener(this);
+	    addMouseMotionListener(this);
 	    thread.start();
 	}
     }
@@ -113,5 +120,35 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     public void keyReleased(KeyEvent key) {
 	gsm.keyReleased(key.getKeyCode());
+    }
+
+    public void mouseDragged(MouseEvent e) {
+	gsm.mouseDragged(e);
+	
+    }
+
+    public void mouseMoved(MouseEvent e) {
+	gsm.mouseMoved(e);
+	
+    }
+
+    public void mouseClicked(MouseEvent e) {
+	gsm.mouseClicked(e);
+	
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
+    }
+
+    public void mousePressed(MouseEvent e) {
+	gsm.mouseClicked(e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+	gsm.mouseReleased(e);
+	
     }
 }

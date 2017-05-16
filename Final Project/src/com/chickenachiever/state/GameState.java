@@ -1,5 +1,7 @@
 package com.chickenachiever.state;
 
+import java.awt.event.MouseEvent;
+
 public abstract class GameState {
 
     protected GameStateManager gsm;
@@ -13,4 +15,13 @@ public abstract class GameState {
     public abstract void keyPressed(int k);
 
     public abstract void keyReleased(int k);
+    
+    public abstract void mouseClicked(MouseEvent e); 
+
+    public abstract void mouseDragged(MouseEvent e);
+
+    public abstract void mouseMoved(MouseEvent e); 
+
+    public abstract void mouseReleased(MouseEvent e); 
+    
 }
