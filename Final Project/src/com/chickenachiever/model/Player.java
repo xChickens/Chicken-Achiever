@@ -19,6 +19,9 @@ public class Player extends MapElement {
 	}
 
 	public void update() {
+		// if (dead) 
+			//respawn
+		//other movement stuff
 	}
 
 	public void draw(Graphics2D graph) {
