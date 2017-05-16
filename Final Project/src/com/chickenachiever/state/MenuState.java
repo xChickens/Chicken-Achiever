@@ -1,5 +1,6 @@
 package com.chickenachiever.state;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +27,7 @@ public class MenuState extends GameState {
 	    e.printStackTrace();
 	}
 	buttons = new ArrayList<Button>(); 
-	buttons.add(new Button(GamePanel.WIDTH / 2 - 110, 220, 220, 60, "Play"));
+	buttons.add(new Button(GamePanel.WIDTH / 2 - 110, 500, 300, 200, "Play", new Font("Helvetica", Font.PLAIN, 60)));
 	buttons.add(new Button(GamePanel.WIDTH / 2 - 110, 310, 220, 60, "Quit"));
 	buttons.add(new Button(GamePanel.WIDTH / 2 - 110, 400, 220, 60, "Credits"));
 

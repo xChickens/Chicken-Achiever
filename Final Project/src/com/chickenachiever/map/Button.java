@@ -28,6 +28,16 @@ public class Button {
 	pressed = new Color(0, 103, 0);
 	this.text = text;
     }
+    
+    public Button(int x, int y, int width, int height, String text, Font font) {
+	box = new Rectangle(x, y, width, height);
+	acLs = new ArrayList<ActionListener>();
+	released = new Color(0, 205, 0);
+	hover = new Color(0, 154, 0);
+	pressed = new Color(0, 103, 0);
+	this.text = text;
+	this.font = font;
+    }
 
     public void update() {
 
@@ -47,7 +57,7 @@ public class Button {
 	g.setColor(Color.white);
 	g.setFont(font);
 	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
-		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight()));
+		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 2));
     }
 
     public void addActionListener(ActionListener listener) {
