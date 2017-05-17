@@ -18,7 +18,7 @@ public class Button {
     private Color released;
     private Color hover;
     private Color pressed;
-    private Font font = new Font("Arial", Font.PLAIN, 20);
+    private Font font = new Font("Helvetica", Font.PLAIN, 60);
 
     public Button(int x, int y, int width, int height, String text) {
 	box = new Rectangle(x, y, width, height);
@@ -57,7 +57,7 @@ public class Button {
 	g.setColor(Color.white);
 	g.setFont(font);
 	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
-		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 2));
+		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
     }
 
     public void addActionListener(ActionListener listener) {
