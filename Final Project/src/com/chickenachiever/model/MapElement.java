@@ -2,7 +2,9 @@ package com.chickenachiever.model;
 
 import java.awt.Rectangle;
 
+import com.chickenachiever.map.Tile;
 import com.chickenachiever.map.TileMap;
+
 
 public abstract class MapElement {
 	
@@ -67,18 +69,86 @@ public abstract class MapElement {
 	}
 
 	public boolean intersects(MapElement e) {
-		return false;
+		Rectangle r1 = getRectangle();
+		Rectangle r2 = e.getRectangle();
+		return r1.intersects(r2);
 
 	}
 
 	public Rectangle getRectangle() {
-		return null;
+		return new Rectangle((int)x - cwidth, (int) y - cheight, cwidth, cheight);
 	}
 
 	public void calculateCorners(double x, double y) {
+		int leftTile = (int) (x - cwidth / 2) / tileSize; 
+		int rightTile = (int) (x + cwidth / 2 - 1) / tileSize; 
+		int topTile = (int) (y - cheight / 2) / tileSize; 
+		int bottomTile = (int) (y + cheight / 2 - 1 ) / tileSize; 
+		
+		int tleft = tileMap.getType(topTile, leftTile);
+		int tright = tileMap.getType(topTile, rightTile);
+		int bleft = tileMap.getType(bottomTile, leftTile);
+		int bright = tileMap.getType(bottomTile, rightTile);
+		
+		topLeft = tleft == Tile.BLOCKED;
+		topRight = tright == Tile.BLOCKED;
+		bottomLeft = bleft == Tile.BLOCKED;
+		bottomRight = bright == Tile.BLOCKED;
 	}
 
 	public void checkTileMapCollision() {
+		currCol = (int) x / tileSize;
+		currRow = (int) y / tileSize;
+		
+		xdest = x + dx;
+		ydest = y + dy;
+		
+		calculateCorners(x, ydest);
+		if (dy < 0) {
+			if (topLeft || topRight){
+				dy = 0;
+				ytemp = currRow * tileSize + cheight / 2;
+			}
+			else {
+				ytemp += dy;
+			}
+		}
+		if (dy > 0){
+			if (bottomLeft || bottomRight){
+				dy = 0;
+				falling = false;
+				ytemp = (currRow + 1) * tileSize - cheight / 2;
+			}
+			else {
+				ytemp += dy;
+			}
+		}
+		
+		calculateCorners (xdest, y);
+		if (dx < 0){
+			if (topLeft || bottomLeft){
+				dx = 0;
+				xtemp = currCol * tileSize + cwidth / 2;
+			}
+			else{
+				xtemp += dx;
+			}
+		}
+		if (dx > 0) {
+			if (topRight || bottomRight){
+				dx = 0;
+				xtemp = (currCol + 1) * tileSize - cwidth / 2;
+			}
+			else{
+				x += dx;
+			}
+		}
+		if (!falling) {
+			calculateCorners(x, ydest + 1);
+			if(!bottomLeft && ! bottomRight) {
+				falling = true;
+			}
+		}
 	}
 	
 	public int getx()
