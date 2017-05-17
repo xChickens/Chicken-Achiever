@@ -1,5 +1,6 @@
 package com.chickenachiever.state;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class GameStateManager{
@@ -36,5 +37,21 @@ public class GameStateManager{
 
     public void keyReleased(int k) {
 	gameStates.get(currentState).keyReleased(k);
+    }
+    
+    public void mouseClicked(MouseEvent e) {
+	gameStates.get(currentState).mouseClicked(e);
+    }
+
+    public void mouseDragged(MouseEvent e) {
+	gameStates.get(currentState).mouseDragged(e);
+    }
+
+    public void mouseMoved(MouseEvent e) {
+	gameStates.get(currentState).mouseMoved(e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+	gameStates.get(currentState).mouseReleased(e);
     }
 }
