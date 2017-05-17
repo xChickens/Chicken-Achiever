@@ -34,12 +34,12 @@ public class Player extends MapElement {
 		stopJumpSpeed = 0.3;
 		
 		try{
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream(/*insert spritesheet location*/));
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("insert spritesheet location"));
 
 			for(int i = 0; i < 4; i++){
 				BufferedImage[] images = new BufferedImage[numFrames[i]];
 				for(int j = 0; j < images.length; j++){
-					images[j] = loadSprites.getSubimage(j*width, i*height, width, height )
+					images[j] = loadSprites.getSubimage(j*width, i*height, width, height );
 				}
 				sprites.add(images); 
 			}
@@ -55,7 +55,7 @@ public class Player extends MapElement {
 	public void update() {
 		
 		//update position
-		getNextPosition();
+		//getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
 		
