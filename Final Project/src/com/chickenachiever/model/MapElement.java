@@ -2,6 +2,7 @@ package com.chickenachiever.model;
 
 import java.awt.Rectangle;
 
+import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.map.Tile;
 import com.chickenachiever.map.TileMap;
 
@@ -224,4 +225,10 @@ public abstract class MapElement {
 	    this.jumping = b;
 	  }
 	  
+	  public boolean onScreen() {
+		  return x + xmap + width < 0 ||
+				  x + xmap - width > GamePanel.WIDTH ||
+				  y + ymap + height < 0 ||
+				  y + ymap - height > GamePanel.HEIGHT;
+	  }
 }
