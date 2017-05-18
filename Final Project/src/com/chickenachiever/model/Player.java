@@ -9,17 +9,20 @@ import javax.imageio.ImageIO;
 import com.chickenachiever.map.TileMap;
 
 public class Player extends MapElement {
-	private ArrayList<BufferedImage[]> sprites;
-	private final int[] numFrames = { 1, 1, 1, 1 };// need to figure out how
+    private ArrayList<BufferedImage[]> sprites;
+    private final int[] numFrames = { 1, 1, 1, 1 };// need to figure out how
 													// many frames
 	private static final int IDLE = 0;
 	private static final int MOVING = 1;
 	private static final int JUMPING = 2;
-	private static final int FALLING = 3;
-	private boolean alive;
+    private static final int FALLING = 3;
+    private boolean alive;
 
-	public Player(TileMap map) {
-		super(map); // set tile map and tile size
+	
+
+
+    public Player(TileMap map) {
+	super(map); // set tile map and tile size
 
 		width = 40;// need to figure out the size of the sprites
 		height = 40;
@@ -59,7 +62,7 @@ public class Player extends MapElement {
 	public void update() {
 
 		// update position
-		// getNextPosition();
+		getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
 
