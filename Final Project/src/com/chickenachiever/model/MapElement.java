@@ -141,7 +141,7 @@ public abstract class MapElement {
 				xtemp = (currCol + 1) * tileSize - cwidth / 2;
 			}
 			else{
-				x += dx;
+				x += dx; //is this supposed to be xtemp+=dx
 			}
 		}
 		if (!falling) {

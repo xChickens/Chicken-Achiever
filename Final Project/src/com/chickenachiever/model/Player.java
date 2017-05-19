@@ -37,6 +37,7 @@ public class Player extends MapElement {
 		jumpStart = -4.8;
 		stopJumpSpeed = 0.3;
 
+		facingRight = true; 
 		try {
 			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("insert spritesheet location"));
 
