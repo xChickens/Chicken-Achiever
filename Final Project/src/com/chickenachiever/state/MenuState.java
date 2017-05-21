@@ -30,6 +30,11 @@ public class MenuState extends GameState {
 	buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 200, 500, 400, 100, "Credits"));
 	buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 200, 620, 400, 100, "Quit"));
 
+	buttons.get(0).addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		gsm.setState(2);
+	    }
+	});
 	buttons.get(1).addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		gsm.setState(1);
