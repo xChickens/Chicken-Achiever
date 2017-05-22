@@ -54,6 +54,7 @@ public class Player extends MapElement {
 	currentAction = IDLE;
 	animation.setFrames(sprites.get(IDLE));
 	animation.setDelay(400);
+	alive = true;
 
     }
 

@@ -35,15 +35,15 @@ public class LevelState extends GameState {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		//player = new Player(tileMap);
-		//player.setPosition(100, 100);
+		player = new Player(tileMap);
+		player.setPosition(50, 50);
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 
-		//player.update();
+		player.update();
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class LevelState extends GameState {
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 
 		tileMap.draw(g);
-		//player.draw(g);
+		player.draw(g);
 	}
 
 	
