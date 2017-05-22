@@ -50,8 +50,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
     }
 
     private void init() {
-	image = new BufferedImage(WIDTH * SCALE, HEIGHT * SCALE,
-		BufferedImage.TYPE_INT_RGB);
+	image = new BufferedImage(WIDTH * SCALE, HEIGHT * SCALE, BufferedImage.TYPE_INT_RGB);
 
 	g = ((Graphics2D) image.getGraphics());
 
@@ -88,7 +87,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 		e.printStackTrace();
 	    }
 	}
-	
+
     }
 
     private void update() {
@@ -115,26 +114,31 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
     }
 
     public void keyPressed(KeyEvent key) {
-	gsm.keyPressed(key.getKeyCode());
+	if (gsm != null)
+	    gsm.keyPressed(key.getKeyCode());
     }
 
     public void keyReleased(KeyEvent key) {
-	gsm.keyReleased(key.getKeyCode());
+	if (gsm != null)
+	    gsm.keyReleased(key.getKeyCode());
     }
 
     public void mouseDragged(MouseEvent e) {
-	gsm.mouseDragged(e);
-	
+	if (gsm != null)
+	    gsm.mouseDragged(e);
+
     }
 
     public void mouseMoved(MouseEvent e) {
-	gsm.mouseMoved(e);
-	
+	if (gsm != null)
+	    gsm.mouseMoved(e);
+
     }
 
     public void mouseClicked(MouseEvent e) {
-	gsm.mouseClicked(e);
-	
+	if (gsm != null)
+	    gsm.mouseClicked(e);
+
     }
 
     public void mouseEntered(MouseEvent e) {
@@ -144,11 +148,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
     }
 
     public void mousePressed(MouseEvent e) {
-	gsm.mouseDragged(e);
+	if (gsm != null)
+	    gsm.mouseDragged(e);
     }
 
     public void mouseReleased(MouseEvent e) {
-	gsm.mouseReleased(e);
-	
+	if (gsm != null)
+	    gsm.mouseReleased(e);
+
     }
 }

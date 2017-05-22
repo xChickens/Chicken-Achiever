@@ -27,9 +27,9 @@ public class LevelState extends GameState {
 
 		tileMap = new TileMap(30);
 		try{
-		BufferedImage i = ImageIO.read(getClass().getResourceAsStream("insert file location"));
+		BufferedImage i = ImageIO.read(getClass().getResourceAsStream("/Elements/testtileset.gif"));
 		tileMap.loadTiles(i);
-		tileMap.loadMap("insert map location");
+		tileMap.loadMap("/Maps/level1.map");
 		tileMap.setPosition(0, 0);
 		}
 		catch(Exception e){
@@ -56,10 +56,10 @@ public class LevelState extends GameState {
 		//player.draw(g);
 	}
 
-	@Override
+	
 	public void keyPressed(int k) {
 		// TODO Auto-generated method stub
-/*
+
 		if (k == KeyEvent.VK_LEFT){
 			player.setLeft(true);
 		}
@@ -68,13 +68,13 @@ public class LevelState extends GameState {
 		}
 		if (k == KeyEvent.VK_UP){
 			player.setJumping(true);
-		}*/
+		}
 	}
 
 	@Override
 	public void keyReleased(int k) {
 		// TODO Auto-generated method stub
-		/*if (k == KeyEvent.VK_LEFT){
+		if (k == KeyEvent.VK_LEFT){
 			player.setLeft(false);
 		}
 		if (k == KeyEvent.VK_RIGHT){
@@ -82,7 +82,7 @@ public class LevelState extends GameState {
 		}
 		if (k == KeyEvent.VK_UP){
 			player.setJumping(false);
-		}*/
+		}
 
 	}
 
