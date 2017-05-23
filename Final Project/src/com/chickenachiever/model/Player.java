@@ -23,8 +23,8 @@ public class Player extends MapElement {
 
 	width = 15;// need to figure out the size of the sprites
 	height = 15;
-	cwidth = 15;
-	cheight = 15;
+	cwidth = 10;
+	cheight = 10;
 
 	moveSpeed = 0.3;
 	maxSpeed = 1.6;
@@ -61,9 +61,15 @@ public class Player extends MapElement {
     public void update() {
 
 	// update position
+   // System.out.println("player update");
+    //System.out.println(getx() + " " + gety());
 	getNextPosition();
+	// System.out.println(getx() + " " + gety());
 	checkTileMapCollision();
+	// System.out.println(getx() + " " + gety());
 	setPosition(xtemp, ytemp);
+	// System.out.println(getx() + " " + gety());
+	//System.out.println(xtemp + " " + ytemp);
 
 	// set animation
 	if (dy > 0) {
@@ -109,7 +115,7 @@ public class Player extends MapElement {
 
     public void draw(Graphics2D graph) {
 
-	if (alive) {
+	//if (alive) {
 
 	    setMapPosition();
 	    // draw player
@@ -119,7 +125,7 @@ public class Player extends MapElement {
 	    } else {// facing left
 		graph.drawImage(animation.getImage(), (int) (x + xmap - width) / 2 + width, (int) (y + ymap - height / 2), -width, height, null);
 	    }
-	}
+	//}
     }
 
     private void getNextPosition() {

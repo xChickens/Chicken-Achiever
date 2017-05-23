@@ -37,6 +37,9 @@ public class LevelState extends GameState {
 		}
 		player = new Player(tileMap);
 		player.setPosition(50, 50);
+		//System.out.println("levelstate init");
+		//System.out.println(player.getx() + " " + player.gety());
+		//System.exit(0);
 	}
 
 	@Override
@@ -50,7 +53,7 @@ public class LevelState extends GameState {
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
+		g.fillRect(0, 0, GamePanel.WIDTH *GamePanel.SCALE, GamePanel.HEIGHT *GamePanel.SCALE);
 
 		tileMap.draw(g);
 		player.draw(g);

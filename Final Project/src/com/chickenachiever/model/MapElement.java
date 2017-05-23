@@ -103,6 +103,9 @@ public abstract class MapElement {
 	xdest = x + dx;
 	ydest = y + dy;
 
+	xtemp = x;
+	ytemp = y;
+	
 	calculateCorners(x, ydest);
 	if (dy < 0) {
 	    if (topLeft || topRight) {
