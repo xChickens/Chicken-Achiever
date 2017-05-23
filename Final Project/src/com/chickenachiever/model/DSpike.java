@@ -10,19 +10,15 @@ public class DSpike extends MapElement {
 	private ArrayList<BufferedImage[]> sprites;
 	private final int[] numFrames = { 1 };
 	private static final int IDLE = 0;
-	
 
-	  public DSpike(TileMap tm)
-	  {
-	    super(tm);
-	  }
-	  
-	  public void update()
-	  {
-	  }
-	  
-	  public void draw(Graphics2D g2d)
-	  {
-	  }
+	public DSpike(TileMap tm) {
+		super(tm);
+	}
+
+	public void update() {
+	}
+
+	public void draw(Graphics2D g2d) {
+	}
 
 }

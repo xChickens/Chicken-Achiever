@@ -67,10 +67,10 @@ public class CreditsState extends GameState {
 	    b.mouseReleased(e);
     }
     
-    public void keyReleased(int k) {
-    }
+	public void keyReleased(int k) {
+	}
 
-    public void keyPressed(int k) {
-    }
+	public void keyPressed(int k) {
+	}
 
 }
