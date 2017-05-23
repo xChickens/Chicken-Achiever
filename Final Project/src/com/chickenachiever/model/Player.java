@@ -30,7 +30,7 @@ public class Player extends MapElement {
 		maxSpeed = 1.6;
 		stopSpeed = 0.4;
 		fallSpeed = 0.15;
-		// maxFallSpeed = 4.0
+		maxFallSpeed = 4.0;
 		jumpStart = -4.8;
 		stopJumpSpeed = 0.3;
 

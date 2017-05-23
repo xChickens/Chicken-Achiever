@@ -25,7 +25,7 @@ public class LevelState extends GameState {
 
 	public void init() {
 
-		tileMap = new TileMap(30);
+		tileMap = new TileMap(60);
 		try {
 			BufferedImage i = ImageIO.read(getClass().getResourceAsStream("/Elements/testtileset.gif"));
 			tileMap.loadTiles(i);
@@ -35,7 +35,7 @@ public class LevelState extends GameState {
 			e.printStackTrace();
 		}
 		player = new Player(tileMap);
-		player.setPosition(50, 50);
+		player.setPosition(100, 100);
 		// System.out.println("levelstate init");
 		// System.out.println(player.getx() + " " + player.gety());
 		// System.exit(0);
