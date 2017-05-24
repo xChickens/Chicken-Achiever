@@ -41,8 +41,8 @@ public class TileMap {
 
 	public TileMap(int tileSize) {
 		this.tileSize = tileSize;
-		numRowsToDraw = (GamePanel.PHEIGHT * GamePanel.SCALE  / tileSize + 2);
-		numColsToDraw = (GamePanel.PWIDTH * GamePanel.SCALE  / tileSize + 2);
+		numRowsToDraw = (GamePanel.PHEIGHT/ tileSize) * GamePanel.SCALE;
+		numColsToDraw = (GamePanel.PWIDTH / tileSize) * GamePanel.SCALE;
 	}
 
 	public void loadTiles(BufferedImage i) {
@@ -73,9 +73,9 @@ public class TileMap {
 			width = (numCols * tileSize);
 			height = (numRows * tileSize);
 
-			xmin = (GamePanel.PWIDTH * GamePanel.SCALE  - width);
+			xmin = (GamePanel.PWIDTH  - width);
 			xmax = 0;
-			ymin = (GamePanel.PHEIGHT * GamePanel.SCALE  - height);
+			ymin = (GamePanel.PHEIGHT - height);
 			ymax = 0;
 
 			String delims = "\\s+";

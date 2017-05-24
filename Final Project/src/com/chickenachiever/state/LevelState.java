@@ -25,7 +25,7 @@ public class LevelState extends GameState {
 
 	public void init() {
 
-		tileMap = new TileMap(60);
+		tileMap = new TileMap(30);
 		try {
 			BufferedImage i = ImageIO.read(getClass().getResourceAsStream("/Elements/testtileset.gif"));
 			tileMap.loadTiles(i);
