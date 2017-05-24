@@ -75,21 +75,21 @@ public class Player extends MapElement {
 		if (dy > 0) {
 			if (currentAction != FALLING) {
 				currentAction = FALLING;
-				animation.setFrames(sprites.get(FALLING));
+				animation.setFrames(sprites.get(IDLE));
 				animation.setDelay(100);
 				width = 40;
 			}
 		} else if (dy < 0) {
 			if (currentAction != JUMPING) {
 				currentAction = JUMPING;
-				animation.setFrames(sprites.get(JUMPING));
+				animation.setFrames(sprites.get(IDLE));
 				animation.setDelay(-1);
 				width = 40;
 			}
 		} else if (left || right) {
 			if (currentAction != MOVING) {
 				currentAction = MOVING;
-				animation.setFrames(sprites.get(MOVING));
+				animation.setFrames(sprites.get(IDLE));
 				animation.setDelay(40);
 				width = 40;
 			}
