@@ -18,16 +18,12 @@ public class USpike extends MapElement {
 
 
 	public void update(Player p) {
-		checkPlayerCollision(p);
+		if(intersects(p)){
+			p.kill();
+		}
 	}
 
 	public void draw(Graphics2D g2d) {
 	}
 	
-	public void checkPlayerCollision(Player p) {
-		calculateCorners(x, y);
-		if (topRight||topLeft||bottomRight||bottomLeft){
-			p.kill();
-		}
-	}
 }

@@ -16,7 +16,13 @@ public class Launcher extends MapElement {
 		super(tm);
 	}
 
-	public void update() {
+	public void update(Player p) {
+		if (intersects(p)){
+			p.fallSpeed = -0.4;
+		}
+		else 
+			p.fallSpeed = 0.15;
+		
 	}
 
 	public void draw(Graphics2D g2d) {
