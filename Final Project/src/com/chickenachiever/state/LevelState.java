@@ -5,11 +5,13 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.map.TileMap;
+import com.chickenachiever.model.Corpse;
 import com.chickenachiever.model.Player;
 
 public class LevelState extends GameState {
@@ -17,6 +19,7 @@ public class LevelState extends GameState {
 	private TileMap tileMap;
 
 	private Player player;
+	private ArrayList<Corpse> corpses;
 
 	public LevelState(GameStateManager gsm) {
 		this.gsm = gsm;
