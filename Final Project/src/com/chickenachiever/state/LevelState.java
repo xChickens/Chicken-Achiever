@@ -51,8 +51,14 @@ public class LevelState extends GameState {
 
 		player.update();
 		corpses.add(player.spawnCorpse());
-		for (int i = 0; i < corpses.size();i++){
+		for (int i = 0; i < corpses.size(); i++) {
 			corpses.get(i).update();
+			if (corpses.size() > 0) {
+				if (corpses.get(i).timeSinceSpawned() > 5000) {
+					corpses.remove(i);
+					i--;
+				}
+			}
 		}
 	}
 
@@ -64,8 +70,15 @@ public class LevelState extends GameState {
 
 		tileMap.draw(g);
 		player.draw(g);
-		for (int i = 0; i < corpses.size();i++){
+		for (int i = 0; i < corpses.size(); i++) {
 			corpses.get(i).draw(g);
+			if (corpses.size() > 0) {
+				if (corpses.get(i).timeSinceSpawned() > 5000) {
+					corpses.remove(i);
+					i--;
+				}
+			}
+
 		}
 	}
 
