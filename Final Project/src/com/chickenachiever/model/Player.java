@@ -9,13 +9,13 @@ import javax.imageio.ImageIO;
 import com.chickenachiever.map.TileMap;
 
 public class Player extends MapElement {
-	private ArrayList<BufferedImage[]> sprites;
-	private final int[] numFrames = { 1, 1, 1, 1 };// need to figure out how
+	protected ArrayList<BufferedImage[]> sprites;
+	protected final int[] numFrames = { 1, 1, 1, 1 };// need to figure out how
 	// many frames
-	private static final int IDLE = 0;
-	private static final int MOVING = 1;
-	private static final int JUMPING = 2;
-	private static final int FALLING = 3;
+	protected static final int IDLE = 0;
+	protected static final int MOVING = 1;
+	protected static final int JUMPING = 2;
+	protected static final int FALLING = 3;
 	private boolean alive;
 
 	public Player(TileMap map) {
@@ -35,23 +35,12 @@ public class Player extends MapElement {
 		stopJumpSpeed = 0.3;
 
 		facingRight = true;
-		try {
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/playersprites.gif"));
-
-			sprites = new ArrayList<BufferedImage[]>();
-			for (int i = 0; i < 4; i++) {
-				BufferedImage[] images = new BufferedImage[numFrames[i]];
-				for (int j = 0; j < images.length; j++) {
-					images[j] = loadSprites.getSubimage(j * width, i * height, width, height);
-				}
-				sprites.add(images);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		loadSprites();
 		animation = new Animation();
 		currentAction = IDLE;
+		if(animation == null){
+			System.out.println("hi");
+		}
 		animation.setFrames(sprites.get(IDLE));
 		animation.setDelay(400);
 		alive = true;
@@ -174,6 +163,23 @@ public class Player extends MapElement {
 			}
 		}
 	}
+	protected void loadSprites(){
+		try {
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/playersprites.gif"));
+
+			sprites = new ArrayList<BufferedImage[]>();
+			for (int i = 0; i < 4; i++) {
+				BufferedImage[] images = new BufferedImage[numFrames[i]];
+				for (int j = 0; j < images.length; j++) {
+					images[j] = loadSprites.getSubimage(j * width, i * height, width, height);
+				}
+				sprites.add(images);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void kill() {
 		alive = false;
@@ -181,6 +187,7 @@ public class Player extends MapElement {
 
 	public void respawn() {
 		alive = true;
+		this.setPosition(100, 100);
 	}
 
 	public boolean isAlive() {

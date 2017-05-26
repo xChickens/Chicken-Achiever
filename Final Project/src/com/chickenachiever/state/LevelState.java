@@ -50,7 +50,10 @@ public class LevelState extends GameState {
 		// TODO Auto-generated method stub
 
 		player.update();
-		corpses.add(player.spawnCorpse());
+		if(!player.isAlive()){
+			corpses.add(player.spawnCorpse());
+			//player.respawn();
+		}
 		for (int i = 0; i < corpses.size(); i++) {
 			corpses.get(i).update();
 			if (corpses.size() > 0) {

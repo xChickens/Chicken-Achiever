@@ -4,15 +4,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+
 import com.chickenachiever.map.TileMap;
 
 public class Corpse extends Player {
 
-	private ArrayList<BufferedImage[]> sprites;
-	private final int[] numFrames = { 1 };
-	private static final int IDLE = 0;
-	private static final int MOVING = 1;
-	private static final int FALLING = 2;
 	private Player player;
 	private long spawnTime;
 
@@ -42,6 +39,25 @@ public class Corpse extends Player {
 	
 	public int timeSinceSpawned(){
 		return (int)((System.nanoTime()/1000000) - spawnTime);
+	}
+	
+	protected void loadSprites(){
+		try {
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/playersprites.gif"));
+
+			sprites = new ArrayList<BufferedImage[]>();
+			for (int i = 0; i < 4; i++) {
+				
+				BufferedImage[] images = new BufferedImage[numFrames[i]];
+				for (int j = 0; j < images.length; j++) {
+					images[j] = loadSprites.getSubimage(j * width, i * height, width, height);
+				}
+				sprites.add(images);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
