@@ -39,6 +39,7 @@ public class LevelState extends GameState {
 		}
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
+		corpses = new ArrayList<Corpse>();
 		// System.out.println("levelstate init");
 		// System.out.println(player.getx() + " " + player.gety());
 		// System.exit(0);
@@ -49,6 +50,10 @@ public class LevelState extends GameState {
 		// TODO Auto-generated method stub
 
 		player.update();
+		corpses.add(player.spawnCorpse());
+		for (int i = 0; i < corpses.size();i++){
+			corpses.get(i).update();
+		}
 	}
 
 	@Override
@@ -59,6 +64,9 @@ public class LevelState extends GameState {
 
 		tileMap.draw(g);
 		player.draw(g);
+		for (int i = 0; i < corpses.size();i++){
+			corpses.get(i).draw(g);
+		}
 	}
 
 	public void keyPressed(int k) {

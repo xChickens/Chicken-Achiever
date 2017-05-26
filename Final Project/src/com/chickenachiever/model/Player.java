@@ -186,4 +186,8 @@ public class Player extends MapElement {
 	public boolean isAlive() {
 		return alive;
 	}
+	
+	public Corpse spawnCorpse(){
+		return new Corpse(tileMap,this);
+	}
 }
