@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import com.chickenachiever.achievements.Achieve;
+import com.chickenachiever.achievements.Achievement;
 import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.map.TileMap;
 import com.chickenachiever.model.Corpse;
@@ -20,6 +22,7 @@ public class LevelState extends GameState {
 
 	private Player player;
 	private ArrayList<Corpse> corpses;
+	private Achieve achieve;
 
 	public LevelState(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -40,6 +43,7 @@ public class LevelState extends GameState {
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
 		corpses = new ArrayList<Corpse>();
+		achieve = new Achieve();
 		// System.out.println("levelstate init");
 		// System.out.println(player.getx() + " " + player.gety());
 		// System.exit(0);
@@ -54,6 +58,11 @@ public class LevelState extends GameState {
 			corpses.add(player.spawnCorpse());
 			//player.respawn();
 		}
+		/*achieve.setPropValue("testproperty", 1);
+		ArrayList<Achievement> achieved = achieve.checkAchievements();
+		for (int i = 0; i < achieved.size(); i++){
+			System.out.println(achieved.get(i).getName());
+		}*/
 		for (int i = 0; i < corpses.size(); i++) {
 			corpses.get(i).update();
 			if (corpses.size() > 0) {
