@@ -1,5 +1,7 @@
 package com.chickenachiever.achievements;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -53,6 +55,22 @@ public class Achieve {
 		}
 		return unlocked;
 	}
+	
+	public void draw(Graphics2D graph){
+		checkAchievements();
+		Iterator<String> iter = myAchievements.keySet().iterator();
+		while(iter.hasNext()){
+			String name = iter.next();
+			if(myAchievements.get(name).getUnlocked()){
+				graph.drawRect(700,300,10,10);//i just put in random position numbers for now
+				graph.setColor(Color.BLACK);
+				graph.fillRect(700,300, 10, 10);
+				graph.drawString(name, 700, 700);
+			}
+			// draw myAchievements.get(name) somehow	
+		}
+	}
+	
 	
 	/* add a method to update an array of properties, if needed*/
 }
