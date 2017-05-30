@@ -26,7 +26,7 @@ public class Player extends MapElement {
 		cwidth = 10;
 		cheight = 10;
 
-		moveSpeed = 0.3;
+		moveSpeed = 0.7;
 		maxSpeed = 1.6;
 		stopSpeed = 0.4;
 		fallSpeed = 0.15;
