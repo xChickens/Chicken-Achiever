@@ -14,12 +14,8 @@ public class BlockRevamp extends MapElementRevamp {
 	private static final int TOUCHED = 1;
 	private boolean touched = false;
 
-	public BlockRevamp(TileMap map) {
-		super(map);
-	}
-
-	public BlockRevamp(TileMapRevamp map) {
-		super(map);
+	public BlockRevamp(TileMapRevamp map, int x, int y) {
+		super(map, x, y);
 	}
 
 	public void update() {
@@ -29,8 +25,5 @@ public class BlockRevamp extends MapElementRevamp {
 				touched = true;
 			}
 		}
-	}
-
-	public void draw(Graphics2D graph) {
 	}
 }

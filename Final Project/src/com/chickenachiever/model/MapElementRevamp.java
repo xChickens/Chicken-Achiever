@@ -13,7 +13,7 @@ import com.chickenachiever.map.TileMapRevamp;
 public abstract class MapElementRevamp {
 
 	// Tiles
-	protected TileMap tileMap;
+	protected TileMapRevamp tileMap;
 	protected int tileSize;
 	protected double xmap;
 	protected double ymap;
@@ -72,12 +72,10 @@ public abstract class MapElementRevamp {
 	//image
 	protected Image image;
 
-	public MapElementRevamp(TileMap tm) {
+	public MapElementRevamp(TileMapRevamp tm, int x, int y) {
+		this.x = x;
+		this.y = y;
 		tileMap = tm;
-		tileSize = tm.getTileSize();
-	}
-
-	public MapElementRevamp(TileMapRevamp tm) {
 		tileSize = tm.getTileSize();
 	}
 
@@ -105,7 +103,7 @@ public abstract class MapElementRevamp {
 	}
 	
 	protected void updateImage(String path) {
-		image = new ImageIcon(getClass().getResource("sprites" + "/" + path)).getImage();
+		image = new ImageIcon(getClass().getResource("Elements" + "/" + path)).getImage();
 		imageWidth = image.getWidth(null);
 		imageHeight = image.getHeight(null);
 	}

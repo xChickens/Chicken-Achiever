@@ -19,8 +19,8 @@ public class PlayerRevamp extends MapElementRevamp {
 	protected static final int FALLING = 3;
 	private boolean alive;
 
-	public PlayerRevamp(TileMapRevamp map) {
-		super(map); // set tile map and tile size
+	public PlayerRevamp(TileMapRevamp map, int x , int y) {
+		super(map, x, y); // set tile map and tile size
 
 		width = 15;// need to figure out the size of the sprites
 		height = 15;

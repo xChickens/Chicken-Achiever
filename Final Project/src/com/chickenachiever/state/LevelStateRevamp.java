@@ -36,8 +36,7 @@ public class LevelStateRevamp extends GameState {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		player = new PlayerRevamp(tileMap);
-		player.setPosition(100, 100);
+		player = new PlayerRevamp(tileMap, 100, 100);
 		corpses = new ArrayList<Corpse>();
 		achieve = new Achieve();
 		// System.out.println("levelstate init");
