@@ -10,7 +10,7 @@ public class Property {
 
 	public Property(String name, int initVal, String activate, int activeValue) {
 		this.name = name;
-		this.initVal = initVal;
+		this.initVal = value = initVal;
 		this.activate = activate;
 		this.activeValue = activeValue;
 	}

@@ -91,6 +91,7 @@ public class LevelState extends GameState {
 			}
 
 		}
+		achieve.draw(g);
 	}
 
 	public void keyPressed(int k) {
