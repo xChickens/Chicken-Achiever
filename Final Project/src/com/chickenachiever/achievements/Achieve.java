@@ -44,7 +44,7 @@ public class Achieve {
 		myProperties.get(name).setValue(val);
 	}
 	
-	public ArrayList<Achievement> checkAchievements(){
+	public ArrayList<Achievement> checkAchievements(){//returns array of newly achieved achievements
 		ArrayList<Achievement> unlocked = new ArrayList<Achievement>();
 		Iterator<String> iter = myAchievements.keySet().iterator();
 		while(iter.hasNext()){
@@ -60,9 +60,36 @@ public class Achieve {
 		}
 		return unlocked;
 	}
-	
+	public void drawOnPlayableArea(Graphics2D graph, ArrayList<Achievement> Achievements){//draw the achievement on the actual level once it is achieved
+		ArrayList<Achievement> newAchievements = new ArrayList<Achievement>();
+		for(int i = 0; i < Achievements.size();i++){
+			if(Achievements.get(i).timeSinceAchieved() < 5000){
+				newAchievements.add(Achievements.get(i));
+			}
+		}
+		int height = 40;
+		for (int i = 0; i < newAchievements.size(); i++){
+			String name = newAchievements.get(i).getName();
+			graph.setColor(Color.GRAY);
+			//768 is the bottom of the screen
+			graph.fillRect(0,768-height- (height*i), 400,  height);
+			graph.setColor(Color.GREEN);
+			
+			graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
+			FontMetrics metrics = graph.getFontMetrics();
+			int Swidth = metrics.stringWidth(name + " unlocked!");
+			int Sheight = metrics.getHeight();
+			graph.drawString(name + " unlocked!", 0 + (400/2) - (Swidth/2), 768-height - (height*i)+Sheight/2+5);
+			if(newAchievements.get(i).timeSinceAchieved() > 5000){
+				newAchievements.remove(i);
+				i--;
+			}
+			
+		}
+	}
 	public void draw(Graphics2D graph){
-		checkAchievements();
+		ArrayList<Achievement> Achievements = checkAchievements();
+		drawOnPlayableArea(graph, Achievements);
 		//draw achievements beginning at position x: x = 720
 		int height = 30;
 		int i = 0;

@@ -6,6 +6,7 @@ public class Achievement {
 									// properties are met
 	protected boolean unlocked;
 	protected int activeProps;
+	private int timeAchieved;
 
 	public Achievement(String name, Property[] properties) {
 		this.name = name;
@@ -35,6 +36,7 @@ public class Achievement {
 		if (activeProps == properties.length) {
 			unlocked = true;
 		}
+		timeAchieved = (int)(System.nanoTime()/1000000);
 		return unlocked;
 	}
 
@@ -44,5 +46,8 @@ public class Achievement {
 
 	public Property[] getProperties() {
 		return properties;
+	}
+	public int timeSinceAchieved(){
+		return (int)((System.nanoTime()/1000000) - timeAchieved);
 	}
 }
