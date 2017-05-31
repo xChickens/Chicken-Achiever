@@ -7,7 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.chickenachiever.main.GamePanel;
-import com.chickenachiever.model.MapElement;
+import com.chickenachiever.model.BlockRevamp;
+import com.chickenachiever.model.MapElementRevamp;
 
 public class TileMapRevamp {
 
@@ -22,7 +23,6 @@ public class TileMapRevamp {
 	private int ymax;
 
 	// Map
-	private int[][] map;
 	private int tileSize;
 	private int numRows;
 	private int numCols;
@@ -30,7 +30,7 @@ public class TileMapRevamp {
 	private int height;
 
 	// Tileset
-	private ArrayList<MapElement> elements;
+	private ArrayList<MapElementRevamp> elements;
 	private int numTilesAcross;
 	private Tile[][] tiles;
 
@@ -41,12 +41,24 @@ public class TileMapRevamp {
 	private int numColsToDraw;
 
 	public TileMapRevamp(int tileSize) {
+		elements = new ArrayList<MapElementRevamp>();
 		this.tileSize = tileSize;
 		numRowsToDraw = (GamePanel.PHEIGHT / tileSize) * GamePanel.SCALE;
 		numColsToDraw = (GamePanel.PWIDTH / tileSize) * GamePanel.SCALE;
 	}
 
-	public void loadTiles() {
+	public void loadTiles(String s) {
+		ArrayList<String> stringList = loadMap(s);
+		for (int h = 0; h < stringList.size(); h++) {
+			String currentLine = stringList.get(h);
+			if (h > 2 && h < 27) {
+				for (int l = 0; l < currentLine.length(); l++) {
+					if (currentLine.charAt(l) == 'p') {
+					} else if (currentLine.charAt(l) == 'B')
+						elements.add(new BlockRevamp(this));
+				}
+			}
+		}
 	}
 
 	public ArrayList<String> loadMap(String s) {
@@ -56,7 +68,6 @@ public class TileMapRevamp {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
-			map = new int[numRows][numCols];
 			width = (numCols * tileSize);
 			height = (numRows * tileSize);
 
@@ -79,7 +90,7 @@ public class TileMapRevamp {
 		return tileSize;
 	}
 
-	public void addElement(MapElement e) {
+	public void addElement(MapElementRevamp e) {
 		elements.add(e);
 	}
 
@@ -91,6 +102,10 @@ public class TileMapRevamp {
 		return (int) y;
 	}
 
+	public ArrayList<MapElementRevamp> getElements(){
+		return elements;
+	}
+	
 	public int getWidth() {
 		return width;
 	}
@@ -129,5 +144,7 @@ public class TileMapRevamp {
 	}
 
 	public void draw(Graphics2D g2) {
+		for (MapElementRevamp e : elements)
+			e.draw(g2);
 	}
 }

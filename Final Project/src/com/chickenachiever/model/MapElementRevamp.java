@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 import com.chickenachiever.map.Tile;
 import com.chickenachiever.map.TileMap;
+import com.chickenachiever.map.TileMapRevamp;
 
 public abstract class MapElementRevamp {
 
@@ -76,6 +77,10 @@ public abstract class MapElementRevamp {
 		tileSize = tm.getTileSize();
 	}
 
+	public MapElementRevamp(TileMapRevamp tm) {
+		tileSize = tm.getTileSize();
+	}
+
 	public boolean intersects(MapElementRevamp e) {
 		Rectangle r1 = getRectangle();
 		Rectangle r2 = e.getRectangle();
@@ -96,6 +101,9 @@ public abstract class MapElementRevamp {
 		// g.drawRect(x, y, width, height);
 	}
 
+	public void update(){
+	}
+	
 	protected void updateImage(String path) {
 		image = new ImageIcon(getClass().getResource("sprites" + "/" + path)).getImage();
 		imageWidth = image.getWidth(null);
