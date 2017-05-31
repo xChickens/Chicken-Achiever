@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import com.chickenachiever.map.TileMap;
+import com.chickenachiever.map.TileMapRevamp;
 
-public class Player extends MapElement {
+public class PlayerRevamp extends MapElementRevamp {
 	protected ArrayList<BufferedImage[]> sprites;
-	protected final int[] numFrames = { 1, 1, 1, 1 };// need to figure out how
+	protected final int[] numFrames = { 0, 1, 2, 3 };// need to figure out how
 	// many frames
 	protected static final int IDLE = 0;
 	protected static final int MOVING = 1;
@@ -18,7 +19,7 @@ public class Player extends MapElement {
 	protected static final int FALLING = 3;
 	private boolean alive;
 
-	public Player(TileMap map) {
+	public PlayerRevamp(TileMapRevamp map) {
 		super(map); // set tile map and tile size
 
 		width = 15;// need to figure out the size of the sprites
@@ -26,7 +27,7 @@ public class Player extends MapElement {
 		cwidth = 10;
 		cheight = 10;
 
-		moveSpeed = 0.7;
+		moveSpeed = 0.3;
 		maxSpeed = 1.6;
 		stopSpeed = 0.4;
 		fallSpeed = 0.15;
@@ -46,7 +47,7 @@ public class Player extends MapElement {
 		alive = true;
 
 	}
-
+	
 	public void update() {
 
 		// update position
@@ -194,7 +195,7 @@ public class Player extends MapElement {
 		return alive;
 	}
 	
-	public Corpse spawnCorpse(){
+	/*public Corpse spawnCorpse(){
 		return new Corpse(tileMap,this);
-	}
+	}*/
 }

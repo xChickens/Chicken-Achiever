@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import com.chickenachiever.achievements.Achieve;
 import com.chickenachiever.achievements.Achievement;
+import com.chickenachiever.achievements.Property;
 import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.map.TileMap;
 import com.chickenachiever.model.Corpse;
@@ -23,6 +24,19 @@ public class LevelState extends GameState {
 	private Player player;
 	private ArrayList<Corpse> corpses;
 	private Achieve achieve;
+	
+	private int blocksTouched;
+	private int spikesTouched;
+	private int launchersTouched;
+	
+	private int totalBlocks;
+	private int totalSpikes;
+	private int totalLaunchers;
+	private int totalAchievements;
+	
+	private int deathCount = 0;
+	
+	
 
 	public LevelState(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -33,7 +47,8 @@ public class LevelState extends GameState {
 
 		tileMap = new TileMap(30);
 		try {
-			BufferedImage i = ImageIO.read(getClass().getResourceAsStream("/Elements/testtileset.gif"));
+			BufferedImage i = ImageIO.read(getClass().getResourceAsStream(
+					"/Elements/testtileset.gif"));
 			tileMap.loadTiles(i);
 			tileMap.loadMap("/Maps/level1.map");
 			tileMap.setPosition(0, 0);
@@ -44,6 +59,61 @@ public class LevelState extends GameState {
 		player.setPosition(100, 100);
 		corpses = new ArrayList<Corpse>();
 		achieve = new Achieve();
+
+		/* template for touching x blocks
+		 * 	
+		 * 
+		 * createProperty("xblocks", 0, achieve.ACTIVE_IF_GREATER, x - 1);
+		 * setValue(blocksTouched); Property[] xblocks =
+		 * {myProperties.get("xblocks")}; achieve.createAchievement("xblocks",
+		 * xblocks);
+		 */
+
+		achieve.createProperty("allblocks", 0, achieve.ACTIVE_IF_EQUAL, totalBlocks);
+		Property[] allblocks = { achieve.getProperties().get("allblocks") };
+		achieve.createAchievement("allblocks", allblocks);
+
+		/* template for touching x amount of spikes
+		 * 
+		 * createProperty("xspikes", 0, achieve.ACTIVE_IF_GREATER, x - 1);
+		 * Property[] xspikes = {achieve.getProperties().get("xspikes")};
+		 * achieve.createAchievement("xspikes", xspikes);
+		 */
+
+		achieve.createProperty("allspikes", 0, achieve.ACTIVE_IF_EQUAL,
+				totalSpikes);
+		Property[] allspikes = { achieve.getProperties().get("allspikes") };
+		achieve.createAchievement("allspikes", allspikes);
+
+		/*
+		 * template for launcher achievements
+		 * 
+		 * achieve.createProperty("xlaunchers", 0, achieve.ACTIVE_IF_GREATER, x- 1); 
+		 * Property[] xlaunchers = {achieve.getProperties().get("xlaunchers")};
+		 * achieve.createAchievement("xlaunchers", xlaunchers);
+		 */
+
+		achieve.createProperty("allLaunchers", 0, achieve.ACTIVE_IF_EQUAL, totalLaunchers);
+		Property[] allLaunchers = { achieve.getProperties().get("allLaunchers") };
+		achieve.createAchievement("allLaunchers", allLaunchers);
+
+		/*	template for dying x times
+		 * 
+		 * achieve.createProperty("Die x times", 0, achieve.ACTIVE_IF_GREATER, x- 1);
+		 * Property[] dieXtimes = {achieve.getProperties().get("Die x times")};
+		 * achieve.createAchievement("Die x times", dieXtimes);
+		 */
+		
+		achieve.createProperty("allAchievements", 0, achieve.ACTIVE_IF_EQUAL, totalAchievements - 1);
+		Property[] allAchievements = {achieve.getProperties().get("allAchievements")};
+		achieve.createAchievement("allAchievements", allAchievements);
+		
+		/* template for timeAlive
+		 * 
+		 * achieve.createProperty("spent xtime Alive", 0, achieve.ACTIVE_IF_GREATER, xtime);
+		Property[] timeAlive = {achieve.getProperties().get("spent xtime Alive")};
+		achieve.createAchievement("spent xtime Alive", timeAlive); */
+
 		// System.out.println("levelstate init");
 		// System.out.println(player.getx() + " " + player.gety());
 		// System.exit(0);
@@ -55,6 +125,7 @@ public class LevelState extends GameState {
 
 		player.update();
 		if(!player.isAlive()){
+			deathCount++;
 			corpses.add(player.spawnCorpse());
 			//player.respawn();
 		}

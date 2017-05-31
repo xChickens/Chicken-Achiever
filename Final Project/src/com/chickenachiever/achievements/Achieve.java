@@ -15,7 +15,7 @@ public class Achieve {
 	public final String ACTIVE_IF_LESS = "<";
 
 	private HashMap<String,Property> myProperties;
-	private HashMap<String,Achievement> myAchievements;
+	private HashMap<String,Achievement> myAchievements;  
 
 	public Achieve(){
 		myProperties = new HashMap<String,Property>();
@@ -27,7 +27,18 @@ public class Achieve {
 		Property[] testarray1= {myProperties.get("testproperty1")};
 		createAchievement("testachievement1",testarray1);
 		//System.out.println("hi");
+		
+
 	}
+	
+	public HashMap<String,Property> getProperties(){
+		return myProperties;
+	}
+	
+	public HashMap<String, Achievement> getAchievements(){
+		return myAchievements;
+	}
+	
 	
 	public void createProperty(String name, int initVal, String activate, int activeValue){
 		myProperties.put(name, new Property(name,initVal,activate,activeValue));
