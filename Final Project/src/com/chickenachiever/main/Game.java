@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class Game {
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Game");
+		JFrame frame = new JFrame("Chicken Achiever");
 		frame.setContentPane(new GamePanel());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);

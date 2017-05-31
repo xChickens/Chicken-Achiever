@@ -145,7 +145,6 @@ public class LevelState extends GameState {
 		}
 	}
 
-	@Override
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.WHITE);
@@ -163,6 +162,7 @@ public class LevelState extends GameState {
 			}
 
 		}
+		achieve.draw(g);
 	}
 
 	public void keyPressed(int k) {

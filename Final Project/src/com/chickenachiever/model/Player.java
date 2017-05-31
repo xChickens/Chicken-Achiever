@@ -10,7 +10,7 @@ import com.chickenachiever.map.TileMap;
 
 public class Player extends MapElement {
 	protected ArrayList<BufferedImage[]> sprites;
-	protected final int[] numFrames = { 1, 1, 1, 1 };// need to figure out how
+	protected final int[] numFrames = { 0, 1, 2, 3 };// need to figure out how
 	// many frames
 	protected static final int IDLE = 0;
 	protected static final int MOVING = 1;
