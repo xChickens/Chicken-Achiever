@@ -26,9 +26,9 @@ public class MenuState extends GameState {
 			e.printStackTrace();
 		}
 		buttons = new ArrayList<Button>();
-		buttons.add(new Button(GamePanel.WIDTH / 2 - 200, 500, 400, 220, "Play", new Font("Helvetica", Font.PLAIN, 150)));
-		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 200, 500, 400, 100, "Credits"));
-		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 200, 620, 400, 100, "Quit"));
+		buttons.add(new Button(GamePanel.WIDTH / 2 - 220, 400, 440, 200, "Play", new Font("Helvetica", Font.PLAIN, 130)));
+		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 220, 400, 440, 90, "Credits"));
+		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 220, 510, 440, 90, "Quit"));
 
 		buttons.get(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

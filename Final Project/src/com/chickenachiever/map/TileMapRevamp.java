@@ -51,11 +51,11 @@ public class TileMapRevamp {
 		ArrayList<String> stringList = loadMap(s);
 		for (int h = 0; h < stringList.size(); h++) {
 			String currentLine = stringList.get(h);
-			if (h > 2 && h < 27) {
+			if (h > 2 && h < 23) {
 				for (int l = 0; l < currentLine.length(); l++) {
 					if (currentLine.charAt(l) == 'p') {
 					} else if (currentLine.charAt(l) == 'B')
-						elements.add(new BlockRevamp(this, (tileSize * l), (tileSize * (h - 1))));
+						elements.add(new BlockRevamp(this, (tileSize * l), (tileSize * (h))));
 				}
 			}
 		}
