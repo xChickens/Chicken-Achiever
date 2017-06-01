@@ -91,12 +91,12 @@ public abstract class MapElementRevamp {
 	}
 	
 	public void draw(Graphics g) {
-		int xCoord = (int)((x + (width / 2)) - (imageWidth / 2));
-		int yCoord = (int)((y + (height / 2)) - (imageHeight / 2));
+		int xCoord = (int)((x + (width / 2)));
+		int yCoord = (int)((y + (height / 2)));
 		g.drawImage(image, xCoord, yCoord, null);
 
 		// Comment this out if you want invisible hitboxes
-		g.drawRect((int) x, (int) y, width, height);
+		//g.drawRect((int) x, (int) y, width, height);
 	}
 
 	public void update(){

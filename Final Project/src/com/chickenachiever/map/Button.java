@@ -18,7 +18,7 @@ public class Button {
 	private Color released;
 	private Color hover;
 	private Color pressed;
-	private Font font = new Font("Helvetica", Font.PLAIN, 60);
+	private Font font = new Font("Helvetica", Font.PLAIN, 50);
 
 	public Button(int x, int y, int width, int height, String text) {
 		box = new Rectangle(x, y, width, height);
