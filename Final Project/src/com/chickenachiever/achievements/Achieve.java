@@ -81,10 +81,10 @@ public class Achieve {
 		int height = 40;
 		for (int i = 0; i < newAchievements.size(); i++){
 			String name = newAchievements.get(i).getName();
-			graph.setColor(Color.BLACK);
+			graph.setColor(new Color(0, 0, 0, 60));
 			//768 is the bottom of the screen
 			graph.fillRect(0,768-height- (height*i), 400,  height);
-			graph.setColor(Color.GREEN);
+			graph.setColor(new Color(0, 255, 0, 60));
 			
 			graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
 			FontMetrics metrics = graph.getFontMetrics();
