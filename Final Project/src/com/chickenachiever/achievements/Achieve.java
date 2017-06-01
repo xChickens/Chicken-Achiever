@@ -81,7 +81,7 @@ public class Achieve {
 		int height = 40;
 		for (int i = 0; i < newAchievements.size(); i++){
 			String name = newAchievements.get(i).getName();
-			graph.setColor(Color.GRAY);
+			graph.setColor(Color.BLACK);
 			//768 is the bottom of the screen
 			graph.fillRect(0,768-height- (height*i), 400,  height);
 			graph.setColor(Color.GREEN);
@@ -109,7 +109,7 @@ public class Achieve {
 			String name = iter.next();
 			if(myAchievements.get(name).getUnlocked()){
 				//graph.drawRect(850,300,200,200);//i just put in random position numbers for now
-				graph.setColor(Color.GRAY);
+				graph.setColor(Color.BLACK);
 				graph.fillRect(720,0+ (height*i), 320,  height);
 				graph.setColor(Color.GREEN);
 				
@@ -120,7 +120,7 @@ public class Achieve {
 				
 			}
 			else{
-				graph.setColor(Color.BLACK);
+				graph.setColor(Color.GRAY);
 				graph.fillRect(720,0+ (height*i), 320,  height);
 				graph.setColor(Color.GREEN);
 				
