@@ -31,7 +31,7 @@ public class LevelStateRevamp extends GameState {
 
 		tileMap = new TileMapRevamp(32);
 		try {
-			tileMap.loadTiles("/Maps/level1.map");
+			tileMap.loadTiles("/Maps/Level 1.txt");
 			tileMap.setPosition(0, 0);
 		} catch (Exception e) {
 			e.printStackTrace();

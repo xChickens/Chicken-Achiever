@@ -96,14 +96,14 @@ public abstract class MapElementRevamp {
 		g.drawImage(image, xCoord, yCoord, null);
 
 		// Comment this out if you want invisible hitboxes
-		// g.drawRect(x, y, width, height);
+		g.drawRect((int) x, (int) y, width, height);
 	}
 
 	public void update(){
 	}
 	
 	protected void updateImage(String path) {
-		image = new ImageIcon(getClass().getResource("Elements" + "/" + path)).getImage();
+		image = new ImageIcon(getClass().getResource("/Elements/" + path)).getImage();
 		imageWidth = image.getWidth(null);
 		imageHeight = image.getHeight(null);
 	}

@@ -55,7 +55,7 @@ public class TileMapRevamp {
 				for (int l = 0; l < currentLine.length(); l++) {
 					if (currentLine.charAt(l) == 'p') {
 					} else if (currentLine.charAt(l) == 'B')
-						elements.add(new BlockRevamp(this, (31 * l), (31 * (h - 1))));
+						elements.add(new BlockRevamp(this, (tileSize * l), (tileSize * (h - 1))));
 				}
 			}
 		}

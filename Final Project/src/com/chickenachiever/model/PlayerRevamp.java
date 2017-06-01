@@ -11,7 +11,7 @@ import com.chickenachiever.map.TileMapRevamp;
 
 public class PlayerRevamp extends MapElementRevamp {
 	protected ArrayList<BufferedImage[]> sprites;
-	protected final int[] numFrames = { 0, 1, 2, 3 };// need to figure out how
+	protected final int[] numFrames = { 1, 5, 3, 3 };// need to figure out how
 	// many frames
 	protected static final int IDLE = 0;
 	protected static final int MOVING = 1;
@@ -22,12 +22,12 @@ public class PlayerRevamp extends MapElementRevamp {
 	public PlayerRevamp(TileMapRevamp map, int x , int y) {
 		super(map, x, y); // set tile map and tile size
 
-		width = 15;// need to figure out the size of the sprites
-		height = 15;
-		cwidth = 10;
-		cheight = 10;
+		width = 32;// need to figure out the size of the sprites
+		height = 34;
+		cwidth = 25;
+		cheight = 30;
 
-		moveSpeed = 0.3;
+		moveSpeed = 0.7;
 		maxSpeed = 1.6;
 		stopSpeed = 0.4;
 		fallSpeed = 0.15;
@@ -65,21 +65,21 @@ public class PlayerRevamp extends MapElementRevamp {
 		if (dy > 0) {
 			if (currentAction != FALLING) {
 				currentAction = FALLING;
-				animation.setFrames(sprites.get(IDLE));
+				animation.setFrames(sprites.get(FALLING));
 				animation.setDelay(100);
 				width = 40;
 			}
 		} else if (dy < 0) {
 			if (currentAction != JUMPING) {
 				currentAction = JUMPING;
-				animation.setFrames(sprites.get(IDLE));
+				animation.setFrames(sprites.get(JUMPING));
 				animation.setDelay(-1);
 				width = 40;
 			}
 		} else if (left || right) {
 			if (currentAction != MOVING) {
 				currentAction = MOVING;
-				animation.setFrames(sprites.get(IDLE));
+				animation.setFrames(sprites.get(MOVING));
 				animation.setDelay(40);
 				width = 40;
 			}
@@ -110,10 +110,11 @@ public class PlayerRevamp extends MapElementRevamp {
 		setMapPosition();
 		// draw player
 		if (facingRight) {
-			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap - height / 2), -width, height, null);
+			
 			// change the input based on the position of the image
 		} else {// facing left
-			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap - height / 2), -width, height, null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), null);
 		}
 		// }
 	}
@@ -166,13 +167,18 @@ public class PlayerRevamp extends MapElementRevamp {
 	}
 	protected void loadSprites(){
 		try {
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/playersprites.gif"));
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/Chickenv4.gif"));
 
 			sprites = new ArrayList<BufferedImage[]>();
 			for (int i = 0; i < 4; i++) {
 				BufferedImage[] images = new BufferedImage[numFrames[i]];
 				for (int j = 0; j < images.length; j++) {
-					images[j] = loadSprites.getSubimage(j * width, i * height, width, height);
+					if (i == 3){
+						images[j] = loadSprites.getSubimage(j * (width+10), 5+ (i * height), width+10, height);
+					}
+					else {
+						images[j] = loadSprites.getSubimage(5+j * width, 5+i * height, width, height);
+					}
 				}
 				sprites.add(images);
 			}
