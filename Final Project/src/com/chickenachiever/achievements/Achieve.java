@@ -111,24 +111,24 @@ public class Achieve {
 			if(myAchievements.get(name).getUnlocked()){
 				//graph.drawRect(850,300,200,200);//i just put in random position numbers for now
 				graph.setColor(Color.BLACK);
-				graph.fillRect(720,0+ (height*i), 320,  height);
+				graph.fillRect(880,0+ (height*i), 320,  height);
 				graph.setColor(Color.GREEN);
 				
 				graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
 				FontMetrics metrics = graph.getFontMetrics();
 				int width = metrics.stringWidth(name);
-				graph.drawString(name, 720 + (320/2) - (width/2), (height*i) + 50/2);
+				graph.drawString(name, 880 + (320/2) - (width/2), (height*i) + 50/2);
 				
 			}
 			else{
 				graph.setColor(Color.GRAY);
-				graph.fillRect(720,0+ (height*i), 320,  height);
+				graph.fillRect(880,0+ (height*i), 320,  height);
 				graph.setColor(Color.GREEN);
 				
 				graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
 				FontMetrics metrics = graph.getFontMetrics();
 				int width = metrics.stringWidth(name);
-				graph.drawString(name, 720 +(320/2) - (width/2), (height*i) + 50/2);
+				graph.drawString(name, 880 +(320/2) - (width/2), (height*i) + 50/2);
 			}
 			// draw myAchievements.get(name) somehow	
 			i++;
