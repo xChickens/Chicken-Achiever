@@ -87,7 +87,7 @@ public class LevelStateRevamp extends GameState {
 		achieve.createAchievement("Gettin' Touchy",fiveBlocks);
 		 
 
-		achieve.createProperty("allBlocks", 0, achieve.ACTIVE_IF_EQUAL, totalBlocks);
+		achieve.createProperty("allBlocks", 0, achieve.ACTIVE_IF_GREATER, totalBlocks-1);
 		Property[] allblocks = { achieve.getProperties().get("allBlocks") };
 		achieve.createAchievement("Painter", allblocks);
 
@@ -100,12 +100,12 @@ public class LevelStateRevamp extends GameState {
 		 */
 		
 		  
-		 achieve.createProperty("fourSpikes", 0, achieve.ACTIVE_IF_GREATER, 4);
+		 achieve.createProperty("fourSpikes", 0, achieve.ACTIVE_IF_GREATER, 3);
 		 Property[] fiveSpikes = {achieve.getProperties().get("fourSpikes")};
 		 achieve.createAchievement("These Blasted Spikes", fiveSpikes);
 		 
 
-		achieve.createProperty("allSpikes", 0, achieve.ACTIVE_IF_EQUAL, totalSpikes);
+		achieve.createProperty("allSpikes", 0, achieve.ACTIVE_IF_GREATER, totalSpikes-1);
 		Property[] allspikes = { achieve.getProperties().get("allSpikes") };
 		achieve.createAchievement("Minced Chicken", allspikes);
 
@@ -116,7 +116,7 @@ public class LevelStateRevamp extends GameState {
 		 * Property[] xlaunchers = {achieve.getProperties().get("xlaunchers")};
 		 * achieve.createAchievement("xlaunchers", xlaunchers);
 		 */
-		
+		/*
 		 achieve.createProperty("fiveLaunchers", 0, achieve.ACTIVE_IF_GREATER, 4); 
 		 Property[] fiveLaunchers = {achieve.getProperties().get("fiveLaunchers")};
 		 achieve.createAchievement("WHEEE!", fiveLaunchers); 
@@ -125,7 +125,7 @@ public class LevelStateRevamp extends GameState {
 		achieve.createProperty("allLaunchers", 0, achieve.ACTIVE_IF_EQUAL, totalLaunchers);
 		Property[] allLaunchers = { achieve.getProperties().get("allLaunchers") };
 		achieve.createAchievement("Chickens can Fly", allLaunchers);
-
+*/
 	
 		//template for dying x times
 		 achieve.createProperty("dieOnce", 0, achieve.ACTIVE_IF_GREATER, 0);
@@ -160,6 +160,7 @@ public class LevelStateRevamp extends GameState {
 		achieve.createProperty("Played for 1min", 0, achieve.ACTIVE_IF_GREATER, 59);
 		Property[] oneMin = {achieve.getProperties().get("Played for 1min")};
 		achieve.createAchievement("Forgot to Close Game", oneMin);
+		lifeStart = System.currentTimeMillis()/1000;
 	}
 
 	@Override
@@ -209,6 +210,7 @@ public class LevelStateRevamp extends GameState {
 			System.out.println(achieved.get(i).getName());
 		}*/
 		achieve.setPropValue("dieOnce", deathCount);
+		achieve.setPropValue("dieTenTimes", deathCount);
 		
 		
 		for (int i = 0; i < corpses.size(); i++) {
