@@ -18,7 +18,7 @@ public class DSpike extends MapElementRevamp {
 	public void update() {
 		//System.out.println("hi");
 		if (p != null) {
-			if (intersects(p, 10, 10)) {
+			if (intersects(p)) {
 				updateImage("DSpikesTouched.png");
 				p.kill();
 			}

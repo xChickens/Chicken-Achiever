@@ -45,6 +45,7 @@ public abstract class MapElementRevamp {
 	protected boolean topRight;
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
+	protected boolean touched;
 
 	// Animation
 	protected Animation animation;
@@ -252,6 +253,10 @@ public abstract class MapElementRevamp {
 
 	public void setJumping(boolean b) {
 		this.jumping = b;
+	}
+
+	public boolean isTouched() {
+		return touched;
 	}
 
 	// public boolean onScreen() {
