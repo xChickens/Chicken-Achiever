@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.model.BlockRevamp;
+import com.chickenachiever.model.DSpike;
+import com.chickenachiever.model.Launcher;
 import com.chickenachiever.model.MapElementRevamp;
 import com.chickenachiever.model.USpike;
 
@@ -59,14 +61,15 @@ public class TileMapRevamp {
 			//System.out.println(h + " "  + currentLine);
 			if (h > -1 && h < 23) {
 				for (int l = 0; l < currentLine.length(); l++) {
-					if(currentLine.charAt(l) == 'U'){
-						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
+					if(currentLine.charAt(l) == 'D'){
+						elements.add(new DSpike(this,(tileSize*l),(tileSize*h)));
 					}
-					else if (currentLine.charAt(l) == 'U') {
+					else if (currentLine.charAt(l) == 'U') 
 						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
-						//System.out.println("hi");
-					} else if (currentLine.charAt(l) == 'B')
+						else if (currentLine.charAt(l) == 'B')
 						elements.add(new BlockRevamp(this, (tileSize * l), (tileSize * (h))));
+					else if (currentLine.charAt(l) == 'L') 
+						elements.add(new Launcher(this,(tileSize*l),(tileSize*h)));
 				}
 			}
 		}

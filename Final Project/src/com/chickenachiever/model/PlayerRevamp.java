@@ -24,7 +24,7 @@ public class PlayerRevamp extends MapElementRevamp {
 
 		width = 32;// need to figure out the size of the sprites
 		height = 34;
-		cwidth = 25;
+		cwidth = 28;
 		cheight = 30;
 
 		moveSpeed = 0.7;

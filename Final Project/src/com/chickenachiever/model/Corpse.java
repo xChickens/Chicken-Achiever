@@ -38,11 +38,11 @@ public class Corpse extends PlayerRevamp {
 	    	setMapPosition();
 		// draw player
 		if (facingRight) {
-			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap - height / 2), -width, -height, null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap - height / 2), -width, height, null);
 			
 			// change the input based on the position of the image
 		} else {// facing left
-			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), width, -height, null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), width, height, null);
 		}
 		//}
 	}
@@ -53,7 +53,7 @@ public class Corpse extends PlayerRevamp {
 	
 	protected void loadSprites(){
 		try {
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/DeadChickens.png"));
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/DeadChickens.gif"));
 
 			sprites = new ArrayList<BufferedImage[]>();
 			for (int i = 0; i < 4; i++) {
