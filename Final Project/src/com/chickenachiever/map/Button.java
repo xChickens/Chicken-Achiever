@@ -18,23 +18,23 @@ public class Button {
 	private Color released;
 	private Color hover;
 	private Color pressed;
-	private Font font = new Font("Helvetica", Font.PLAIN, 50);
+	private Font font = new Font("Calisto MT", Font.PLAIN, 50);
 
 	public Button(int x, int y, int width, int height, String text) {
 		box = new Rectangle(x, y, width, height);
 		acLs = new ArrayList<ActionListener>();
-		released = new Color(0, 205, 0);
-		hover = new Color(0, 154, 0);
-		pressed = new Color(0, 103, 0);
+		released = new Color(0, 0, 255);
+		hover = new Color(0, 0, 154);
+		pressed = new Color(0, 0, 103);
 		this.text = text;
 	}
 
 	public Button(int x, int y, int width, int height, String text, Font font) {
 		box = new Rectangle(x, y, width, height);
 		acLs = new ArrayList<ActionListener>();
-		released = new Color(0, 205, 0);
-		hover = new Color(0, 154, 0);
-		pressed = new Color(0, 103, 0);
+		released = new Color(0, 0, 255);
+		hover = new Color(0, 0, 154);
+		pressed = new Color(0, 0, 103);
 		this.text = text;
 		this.font = font;
 	}
@@ -54,7 +54,7 @@ public class Button {
 			g.setColor(pressed);
 			g.fill(box);
 		}
-		g.setColor(Color.white);
+		g.setColor(new Color(0, 255, 0));
 		g.setFont(font);
 		g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
 				box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));

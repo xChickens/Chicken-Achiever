@@ -15,7 +15,7 @@ import com.chickenachiever.map.Button;
 
 public class CreditsState extends GameState {
     private Background bg;
-    private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/Creditsv2.png"));
+    private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/Credits.png"));
     private ArrayList<Button> buttons;
 
     public CreditsState(GameStateManager gsm) {
