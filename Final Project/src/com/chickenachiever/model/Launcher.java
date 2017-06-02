@@ -16,15 +16,21 @@ public class Launcher extends MapElementRevamp {
 	public Launcher(TileMapRevamp tm, int x, int y) {
 		super(tm, x, y);
 		updateImage("Launcher.png");
+		cwidth = 10;
+		cheight = 10;
 	}
 
 	public void setPlayer(PlayerRevamp p) {
 		this.p = p;
 	}
 
-	public void update(PlayerRevamp p) {
-		if (intersects(p)){
-			p.dy += -6;
+	public void update() {
+		if (p != null) {
+			if (intersects(p)) {
+				touched = true;
+				p.dy += -6;
+				updateImage("LauncherTouched.png");
+			}
 		}
 		
 	}

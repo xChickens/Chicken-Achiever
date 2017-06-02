@@ -21,8 +21,8 @@ public abstract class MapElementRevamp {
 	// Position
 	protected double x;
 	protected double y;
-	protected double dx;
-	protected double dy;
+	public double dx;
+	public double dy;
 
 	// Dimensions
 	protected int imageWidth;
@@ -96,7 +96,7 @@ public abstract class MapElementRevamp {
 	}
 
 	public Rectangle getRectangle() {
-		return new Rectangle((int) x - cwidth, (int) y - cheight, cwidth, cheight);
+		return new Rectangle((int) (x - cwidth), (int) (y - cheight), cwidth, cheight);
 	}
 	
 	public Rectangle getRectangle(int cwidth, int cheight) {
