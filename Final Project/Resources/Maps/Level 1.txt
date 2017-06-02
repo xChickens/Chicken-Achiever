@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 20
 28
 BBBBBBBBBBBBBBBBBBBBBBBBBBBB                              
@@ -20,27 +19,3 @@ B B     B         UB       B
 B  B    BUUUUUUUUUBB       B           
 BB     BBBBBBBBBBBBB  BBBB B                
 B  B                       B     
-=======
-20
-28
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                             
-                              
-                              
-                              
-                        
-                        
-                        
-BD                        
-B                        
-BU                              
->>>>>>> branch 'master' of https://github.com/ssuperkid5/APCS-Final-Project
-BBBBBBBBBBBBBBBBBBBBBBBBBBBB
