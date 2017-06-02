@@ -31,7 +31,7 @@ public class LevelStateRevamp extends GameState {
 	private int spikesTouched;
 	private int launchersTouched;
 	
-	private final int totalBlocks = 126;
+	private final int totalBlocks = 100;
 	private final int totalSpikes = 10;
 	private final int totalLaunchers = 8;
 	private int totalAchievements;
@@ -100,8 +100,8 @@ public class LevelStateRevamp extends GameState {
 		 */
 		
 		  
-		 achieve.createProperty("fourSpikes", 0, achieve.ACTIVE_IF_GREATER, 3);
-		 Property[] fiveSpikes = {achieve.getProperties().get("fourSpikes")};
+		 achieve.createProperty("fiveSpikes", 0, achieve.ACTIVE_IF_GREATER, 4);
+		 Property[] fiveSpikes = {achieve.getProperties().get("fiveSpikes")};
 		 achieve.createAchievement("These Blasted Spikes", fiveSpikes);
 		 
 
@@ -180,17 +180,19 @@ public class LevelStateRevamp extends GameState {
 			MapElementRevamp e = objectList.get(count);
 			e.update();
 			//System.out.println(count);
-			if(e instanceof BlockRevamp && ((BlockRevamp) e).isTouched())
+			if(e instanceof BlockRevamp && ((BlockRevamp) e).isTouched() && !e.checked())
 			{
 				blocksTouched++;
+				e.nowChecked();
 				achieve.setPropValue("fiveBlocks", blocksTouched);
-				//achieve.setPropValue("allBlocks", blocksTouched);
+				achieve.setPropValue("allBlocks", blocksTouched);
 			}
 			
-			else if((e instanceof DSpike || e instanceof USpike) && e.isTouched())
+			else if((e instanceof DSpike || e instanceof USpike) && e.isTouched() && !e.checked())
 			{
 				spikesTouched++;
-				achieve.setPropValue("fourSpikes", spikesTouched);
+				e.nowChecked();
+				achieve.setPropValue("fiveSpikes", spikesTouched);
 				achieve.setPropValue("allSpikes", spikesTouched);
 			}
 			count++;

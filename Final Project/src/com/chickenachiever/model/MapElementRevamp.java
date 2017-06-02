@@ -46,6 +46,7 @@ public abstract class MapElementRevamp {
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
 	protected boolean touched;
+	protected boolean checked = false;
 
 	// Animation
 	protected Animation animation;
@@ -259,6 +260,13 @@ public abstract class MapElementRevamp {
 		return touched;
 	}
 
+	public void nowChecked(){
+		checked = true;
+	}
+	
+	public boolean checked(){
+		return checked;
+	}
 	// public boolean onScreen() {
 	// return x + xmap + width < 0 || x + xmap - width > GamePanel.WIDTH || y +
 	// ymap + height < 0 || y + ymap - height > GamePanel.HEIGHT;

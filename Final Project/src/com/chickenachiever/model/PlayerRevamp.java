@@ -28,9 +28,9 @@ public class PlayerRevamp extends MapElementRevamp {
 		cheight = 30;
 
 		moveSpeed = 0.7;
-		maxSpeed = 1.6;
+		maxSpeed = 3;
 		stopSpeed = 0.4;
-		fallSpeed = 0.15;
+		fallSpeed = 0.5;
 		maxFallSpeed = 4.0;
 		jumpStart = -6;
 		stopJumpSpeed = 0.3;

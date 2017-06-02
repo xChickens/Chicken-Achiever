@@ -33,7 +33,4 @@ public class BlockRevamp extends MapElementRevamp {
 		}
 	}
 	
-	public boolean isTouched(){
-	    return touched;
-	}
 }
