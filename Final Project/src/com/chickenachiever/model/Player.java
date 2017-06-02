@@ -169,7 +169,7 @@ public class Player extends MapElement {
 			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/Chickenv4.gif"));
 
 			sprites = new ArrayList<BufferedImage[]>();
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 4; i++) { 
 				BufferedImage[] images = new BufferedImage[numFrames[i]];
 				for (int j = 0; j < images.length; j++) {
 					if (i == 3){

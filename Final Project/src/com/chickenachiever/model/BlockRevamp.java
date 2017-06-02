@@ -20,12 +20,13 @@ public class BlockRevamp extends MapElementRevamp {
 	}
 
 	public void update() {
-		/*calculateCorners(x,y);
+		calculateCorners(x,y);
 		if(topLeft || topRight || bottomLeft || bottomRight){
 			if(touched == false){
 				touched = true;
 			}
-		}*/
+		}
+		//System.out.println(touched);
 	}
 
     public boolean isSolid()

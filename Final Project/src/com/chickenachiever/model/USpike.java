@@ -5,19 +5,22 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import com.chickenachiever.map.TileMap;
+import com.chickenachiever.map.TileMapRevamp;
 
-public class USpike extends MapElement {
+public class USpike extends MapElementRevamp {
 
 	private ArrayList<BufferedImage[]> sprites;
 	private final int[] numFrames = { 1 };
 	private static final int IDLE = 0;
 
-	public USpike(TileMap tm) {
-		super(tm);
+	public USpike(TileMapRevamp tm, int x, int y) {
+		super(tm,x,y);
+		cwidth = 10;
+		cheight = 10;
 	}
 
 
-	public void update(Player p) {
+	public void update(PlayerRevamp p) {
 		if(intersects(p)){
 			p.kill();
 		}
