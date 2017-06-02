@@ -15,7 +15,7 @@ import com.chickenachiever.map.Button;
 
 public class MenuState extends GameState {
 	private Background bg;
-	private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/Menuv2.png"));
+	private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/MainMenu.png"));
 	private ArrayList<Button> buttons;
 
 	public MenuState(GameStateManager gsm) {
@@ -26,9 +26,9 @@ public class MenuState extends GameState {
 			e.printStackTrace();
 		}
 		buttons = new ArrayList<Button>();
-		buttons.add(new Button(GamePanel.WIDTH / 2 - 220, 400, 440, 200, "Play", new Font("Helvetica", Font.PLAIN, 130)));
-		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 220, 400, 440, 90, "Credits"));
-		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 220, 510, 440, 90, "Quit"));
+		buttons.add(new Button(GamePanel.WIDTH / 2 - 230, 400, 460, 200, "Play", new Font("Calisto MT", Font.PLAIN, 130)));
+		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 230, 400, 460, 90, "Credits"));
+		buttons.add(new Button(GamePanel.WIDTH * 3 / 2 - 230, 510, 460, 90, "Quit"));
 
 		buttons.get(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
