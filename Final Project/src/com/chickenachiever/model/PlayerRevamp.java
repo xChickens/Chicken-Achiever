@@ -32,7 +32,7 @@ public class PlayerRevamp extends MapElementRevamp {
 		stopSpeed = 0.4;
 		fallSpeed = 0.5;
 		maxFallSpeed = 4.0;
-		jumpStart = -6;
+		jumpStart = -12;
 		stopJumpSpeed = 0.3;
 
 		facingRight = true;

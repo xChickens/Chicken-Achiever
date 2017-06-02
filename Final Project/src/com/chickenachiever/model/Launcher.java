@@ -15,6 +15,7 @@ public class Launcher extends MapElementRevamp {
 
 	public Launcher(TileMapRevamp tm, int x, int y) {
 		super(tm, x, y);
+		updateImage("Launcher.png");
 	}
 
 	public void setPlayer(PlayerRevamp p) {
@@ -23,7 +24,7 @@ public class Launcher extends MapElementRevamp {
 
 	public void update(PlayerRevamp p) {
 		if (intersects(p)){
-			p.dy = -6;
+			p.dy += -6;
 		}
 		
 	}
