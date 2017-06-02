@@ -114,15 +114,15 @@ public abstract class MapElementRevamp {
 		int topTile = (int) (y - cheight / 2) / tileSize;
 		int bottomTile = (int) (y + cheight / 2 - 1) / tileSize;
 
-		int tleft = tileMap.getType(topTile, leftTile);
+		int tleft = tileMap.getType(topTile, leftTile);//find out what type of block it is
 		int tright = tileMap.getType(topTile, rightTile);
 		int bleft = tileMap.getType(bottomTile, leftTile);
 		int bright = tileMap.getType(bottomTile, rightTile);
 
-		topLeft = tleft == Tile.BLOCKED;
-		topRight = tright == Tile.BLOCKED;
-		bottomLeft = bleft == Tile.BLOCKED;
-		bottomRight = bright == Tile.BLOCKED;
+		topLeft = (tleft != TileMapRevamp.EMPTY);
+		topRight = (tright != TileMapRevamp.EMPTY);
+		bottomLeft = (bleft != TileMapRevamp.EMPTY);
+		bottomRight = (bright != TileMapRevamp.EMPTY);
 	}
 
 	public void checkTileMapCollision() {

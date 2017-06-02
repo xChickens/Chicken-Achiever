@@ -152,6 +152,7 @@ public class LevelStateRevamp extends GameState {
 
 	@Override
 	public void update() {
+		
 		// TODO Auto-generated method stub
 		ArrayList<MapElementRevamp> objectList = tileMap.getElements();
 		//System.out.println("objectlist size" + objectList.size());
@@ -207,7 +208,7 @@ public class LevelStateRevamp extends GameState {
 				}
 			}
 
-		}
+		}	
 		achieve.draw(g);
 	}
 

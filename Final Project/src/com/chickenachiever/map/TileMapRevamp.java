@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.model.BlockRevamp;
 import com.chickenachiever.model.MapElementRevamp;
+import com.chickenachiever.model.USpike;
 
 public class TileMapRevamp {
 
+	public static final char EMPTY = ' ';// representation of empty space in map
+	
 	// Position
 	private double x;
 	private double y;
@@ -23,6 +26,7 @@ public class TileMapRevamp {
 	private int ymax;
 
 	// Map
+	ArrayList<String> map;
 	private int tileSize;
 	private int numRows;
 	private int numCols;
@@ -48,12 +52,15 @@ public class TileMapRevamp {
 	}
 
 	public void loadTiles(String s) {
+		//break down the file outlining the map and translate it into blocks
 		ArrayList<String> stringList = loadMap(s);
 		for (int h = 0; h < stringList.size(); h++) {
 			String currentLine = stringList.get(h);
+			//System.out.println(h + " "  + currentLine);
 			if (h > 2 && h < 23) {
 				for (int l = 0; l < currentLine.length(); l++) {
-					if (currentLine.charAt(l) == 'p') {
+					if (currentLine.charAt(l) == 'U') {
+						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
 					} else if (currentLine.charAt(l) == 'B')
 						elements.add(new BlockRevamp(this, (tileSize * l), (tileSize * (h))));
 				}
@@ -62,7 +69,8 @@ public class TileMapRevamp {
 	}
 
 	public ArrayList<String> loadMap(String s) {
-		ArrayList<String> list = new ArrayList<String>();
+		//read in the file outlining the map
+		map = new ArrayList<String>();
 		try {
 			InputStream in = getClass().getResourceAsStream(s);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -77,13 +85,15 @@ public class TileMapRevamp {
 			ymax = 0;
 
 			String line;
-			while ((line = br.readLine()) != null)
-				list.add(line);
+			while ((line = br.readLine()) != null){
+				map.add(line);
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list;
+		return map;
 	}
 
 	public int getTileSize() {
@@ -115,8 +125,8 @@ public class TileMapRevamp {
 		return height;
 	}
 
-	public int getType(int row, int col) {
-		return 0;
+	public int getType(int row, int col) {// returns the type of element
+		return map.get(row).charAt(col);
 	}
 
 	public void setPosition(double x, double y) {
