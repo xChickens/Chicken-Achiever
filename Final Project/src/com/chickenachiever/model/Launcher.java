@@ -4,24 +4,27 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import com.chickenachiever.map.TileMap;
+import com.chickenachiever.map.TileMapRevamp;
 
-public class Launcher extends MapElement {
+public class Launcher extends MapElementRevamp {
 
 	private ArrayList<BufferedImage[]> sprites;
 	private final int[] numFrames = { 1 };
 	private static final int IDLE = 0;
+	private PlayerRevamp p;
 
-	public Launcher(TileMap tm) {
-		super(tm);
+	public Launcher(TileMapRevamp tm, int x, int y) {
+		super(tm, x, y);
 	}
 
-	public void update(Player p) {
+	public void setPlayer(PlayerRevamp p) {
+		this.p = p;
+	}
+
+	public void update(PlayerRevamp p) {
 		if (intersects(p)){
-			p.fallSpeed = -0.4;
+			p.dy = -6;
 		}
-		else 
-			p.fallSpeed = 0.15;
 		
 	}
 

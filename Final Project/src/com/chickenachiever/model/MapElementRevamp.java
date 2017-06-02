@@ -86,7 +86,18 @@ public abstract class MapElementRevamp {
 
 	}
 
+	public boolean intersects(MapElementRevamp e, int cwidth, int cheight) {
+		Rectangle r1 = getRectangle(cwidth, cheight);
+		Rectangle r2 = e.getRectangle();
+		return r1.intersects(r2);
+
+	}
+
 	public Rectangle getRectangle() {
+		return new Rectangle((int) x - cwidth, (int) y - cheight, cwidth, cheight);
+	}
+	
+	public Rectangle getRectangle(int cwidth, int cheight) {
 		return new Rectangle((int) x - cwidth, (int) y - cheight, cwidth, cheight);
 	}
 	

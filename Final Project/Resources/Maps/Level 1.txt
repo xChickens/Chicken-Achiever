@@ -2,21 +2,21 @@
 28
 BBBBBBBBBBBBBBBBBBBBBBBBBBBB                              
 B                          B    
-BBB                        B      
-B                          B    
-B                          B   
-B                          B    
-B                          B    
-B                          B    
-B                          B    
+BBB  L L    L  L  L L BB   B      
+B D                     B  B    
+B                        B B   
+B                        D B    
+BL                         B    
+BL                         B    
+B   B  B    BBBB    B  B   B    
 B                          B   
 B                          B    
 B B                        B     
-B  B                     B B     
-BB B                     B B
-B  B    B          B     B B 
-B B     B         UB    BB B 
-B  B    BUUUUUUUUUBB   BBB B           
-BB     BBBBBBBBBBBBB  BBBB B                
-B  B                       B     
+B  B                     BLB     
+BB B                     BLB
+B  B    B          B     BLB 
+B B     B         UB    BBLB 
+B  B    BUUUUUUUUUBB   BBBLB           
+BB     BBBBBBBBBBBBB  BBBBLB                
+B  B                      LB     
 BBBBBBBBBBBBBBBBBBBBBBBBBBBB
