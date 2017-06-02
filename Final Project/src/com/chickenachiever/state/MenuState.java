@@ -15,7 +15,7 @@ import com.chickenachiever.map.Button;
 
 public class MenuState extends GameState {
 	private Background bg;
-	private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/Menu.png"));
+	private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/Menuv2.png"));
 	private ArrayList<Button> buttons;
 
 	public MenuState(GameStateManager gsm) {
