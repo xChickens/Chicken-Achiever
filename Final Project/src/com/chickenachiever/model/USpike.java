@@ -5,7 +5,6 @@ import com.chickenachiever.map.TileMapRevamp;
 public class USpike extends MapElementRevamp {
 
 	private PlayerRevamp p;
-	private boolean touched;
 
 	public USpike(TileMapRevamp tm, int x, int y) {
 		super(tm, x, y);
@@ -31,5 +30,10 @@ public class USpike extends MapElementRevamp {
 	public boolean isTouched()
 	{
 		return touched;
+	}
+	
+	public boolean checked()
+	{
+		return checked;
 	}
 }

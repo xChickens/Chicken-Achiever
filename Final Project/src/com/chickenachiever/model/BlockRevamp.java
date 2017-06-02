@@ -9,7 +9,6 @@ public class BlockRevamp extends MapElementRevamp {
 
 	private static final int UNTOUCHED = 0;
 	private static final int TOUCHED = 1;
-	private boolean touched;
 	private PlayerRevamp p;
 
 	public BlockRevamp(TileMapRevamp map, int x, int y) {
@@ -31,9 +30,5 @@ public class BlockRevamp extends MapElementRevamp {
 				touched = true;
 			}
 		}
-	}
-	
-	public boolean isTouched(){
-	    return touched;
 	}
 }
