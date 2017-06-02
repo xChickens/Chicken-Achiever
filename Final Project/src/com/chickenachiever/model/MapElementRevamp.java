@@ -46,7 +46,6 @@ public abstract class MapElementRevamp {
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
 	protected boolean touched;
-	protected boolean checked;
 
 	// Animation
 	protected Animation animation;
@@ -247,15 +246,6 @@ public abstract class MapElementRevamp {
 
 	public boolean isTouched() {
 		return touched;
-	}
-	
-	public void nowChecked()
-	{
-		checked = true;
-	}
-	public boolean checked()
-	{
-		return checked;
 	}
 
 	// public boolean onScreen() {

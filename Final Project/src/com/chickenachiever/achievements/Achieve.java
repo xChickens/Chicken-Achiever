@@ -20,6 +20,12 @@ public class Achieve {
 	public Achieve(){
 		myProperties = new HashMap<String,Property>();
 		myAchievements = new HashMap<String,Achievement>();
+		createProperty("testproperty",1,ACTIVE_IF_EQUAL,1);
+		Property[] testarray= {myProperties.get("testproperty")};
+		createAchievement("testachievement",testarray);
+		createProperty("testproperty1",0,ACTIVE_IF_EQUAL,1);
+		Property[] testarray1= {myProperties.get("testproperty1")};
+		createAchievement("testachievement1",testarray1);
 		//System.out.println("hi");
 		
 

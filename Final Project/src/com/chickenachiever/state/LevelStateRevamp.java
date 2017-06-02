@@ -13,7 +13,6 @@ import com.chickenachiever.map.TileMapRevamp;
 import com.chickenachiever.model.BlockRevamp;
 import com.chickenachiever.model.Corpse;
 import com.chickenachiever.model.DSpike;
-import com.chickenachiever.model.Launcher;
 import com.chickenachiever.model.MapElementRevamp;
 import com.chickenachiever.model.Player;
 import com.chickenachiever.model.PlayerRevamp;
@@ -101,8 +100,8 @@ public class LevelStateRevamp extends GameState {
 		 */
 		
 		  
-		 achieve.createProperty("fiveSpikes", 0, achieve.ACTIVE_IF_GREATER, 4);
-		 Property[] fiveSpikes = {achieve.getProperties().get("fiveSpikes")};
+		 achieve.createProperty("fourSpikes", 0, achieve.ACTIVE_IF_GREATER, 4);
+		 Property[] fiveSpikes = {achieve.getProperties().get("fourSpikes")};
 		 achieve.createAchievement("These Blasted Spikes", fiveSpikes);
 		 
 
@@ -160,7 +159,7 @@ public class LevelStateRevamp extends GameState {
 		
 		achieve.createProperty("Played for 1min", 0, achieve.ACTIVE_IF_GREATER, 59);
 		Property[] oneMin = {achieve.getProperties().get("Played for 1min")};
-		achieve.createAchievement("Forgot to Close the Game", oneMin);
+		achieve.createAchievement("Forgot to Close Game", oneMin);
 	}
 
 	@Override
@@ -180,27 +179,18 @@ public class LevelStateRevamp extends GameState {
 			MapElementRevamp e = objectList.get(count);
 			e.update();
 			//System.out.println(count);
-			if(e instanceof BlockRevamp && e.isTouched() && !e.checked())
+			if(e instanceof BlockRevamp && ((BlockRevamp) e).isTouched())
 			{
 				blocksTouched++;
-				e.nowChecked();
 				achieve.setPropValue("fiveBlocks", blocksTouched);
-				achieve.setPropValue("allBlocks", blocksTouched);
+				//achieve.setPropValue("allBlocks", blocksTouched);
 			}
 			
-			else if((e instanceof DSpike || e instanceof USpike) && e.isTouched() && !e.checked())
+			else if((e instanceof DSpike || e instanceof USpike) && e.isTouched())
 			{
 				spikesTouched++;
-				e.nowChecked();
-				achieve.setPropValue("fiveSpikes", spikesTouched);
+				achieve.setPropValue("fourSpikes", spikesTouched);
 				achieve.setPropValue("allSpikes", spikesTouched);
-			}
-			else if((e instanceof Launcher) && e.isTouched() && !e.checked()){
-				launchersTouched++;
-				e.nowChecked();
-				achieve.setPropValue("fiveLaunchers", launchersTouched);
-				achieve.setPropValue("allLaunchers", launchersTouched);
-				
 			}
 			count++;
 		}
