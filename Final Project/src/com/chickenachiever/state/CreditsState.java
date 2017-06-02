@@ -26,7 +26,7 @@ public class CreditsState extends GameState {
 	    e.printStackTrace();
 	}
 	buttons = new ArrayList<Button>(); 
-	buttons.add(new Button(48, 500, 1100, 100, "Main Menu"));
+	buttons.add(new Button(48, 520, 1100, 100, "Main Menu"));
 	buttons.get(0).addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		gsm.setState(0);

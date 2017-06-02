@@ -154,6 +154,7 @@ public class LevelStateRevamp extends GameState {
 	public void update() {
 		// TODO Auto-generated method stub
 		ArrayList<MapElementRevamp> objectList = tileMap.getElements();
+		//System.out.println("objectlist size" + objectList.size());
 		
 		currentTime = System.currentTimeMillis()/1000;
 		achieve.setPropValue("10sec Alive", (int)(currentTime - lifeStart));
@@ -164,8 +165,10 @@ public class LevelStateRevamp extends GameState {
 		while ((objectList != null) && (count < objectList.size())) {
 			MapElementRevamp e = objectList.get(count);
 			e.update();
+			//System.out.println(count);
 			count++;
 		}
+		//System.out.println("Count:" + count);
 		
 		player.update();
 		/*if(!player.isAlive()){

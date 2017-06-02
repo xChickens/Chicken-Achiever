@@ -78,19 +78,20 @@ public class Achieve {
 				newAchievements.add(Achievements.get(i));
 			}
 		}
+		
 		int height = 40;
 		for (int i = 0; i < newAchievements.size(); i++){
 			String name = newAchievements.get(i).getName();
 			graph.setColor(new Color(0, 0, 0, 60));
 			//768 is the bottom of the screen
-			graph.fillRect(0,768-height- (height*i), 400,  height);
-			graph.setColor(new Color(0, 255, 0, 60));
+			graph.fillRect(0,640-height- (height*i), 400,  height);
+			graph.setColor(new Color(0, 255, 0, 90));
 			
 			graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
 			FontMetrics metrics = graph.getFontMetrics();
 			int Swidth = metrics.stringWidth(name + " unlocked!");
 			int Sheight = metrics.getHeight();
-			graph.drawString(name + " unlocked!", 0 + (400/2) - (Swidth/2), 768-height - (height*i)+Sheight/2+5);
+			graph.drawString(name + " unlocked!", 0 + (400/2) - (Swidth/2), 640-height - (height*i)+Sheight/2+5);
 			if(newAchievements.get(i).timeSinceAchieved() > 5000){
 				newAchievements.remove(i);
 				i--;

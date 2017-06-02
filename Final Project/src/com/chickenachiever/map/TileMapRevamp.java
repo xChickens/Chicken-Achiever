@@ -103,6 +103,7 @@ public class TileMapRevamp {
 	}
 
 	public ArrayList<MapElementRevamp> getElements(){
+		//System.out.println("element size" + elements.size());
 		return elements;
 	}
 	
@@ -144,7 +145,13 @@ public class TileMapRevamp {
 	}
 
 	public void draw(Graphics2D g2) {
-		for (MapElementRevamp e : elements)
-			e.draw(g2);
+		for (int i = 0; i < elements.size(); i++){
+			try{
+			elements.get(i).draw(g2);
+			//System.out.println(eleme.getx());
+			}catch(Exception f){
+				f.printStackTrace();
+			}
+		}
 	}
 }
