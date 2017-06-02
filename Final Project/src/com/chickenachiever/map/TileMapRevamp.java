@@ -13,7 +13,7 @@ import com.chickenachiever.model.USpike;
 
 public class TileMapRevamp {
 
-	public static final char EMPTY = ' ';// representation of empty space in map
+	public static final char BLOCKED = 'B';// representation of empty space in map
 	
 	// Position
 	private double x;
@@ -59,8 +59,12 @@ public class TileMapRevamp {
 			//System.out.println(h + " "  + currentLine);
 			if (h > -1 && h < 23) {
 				for (int l = 0; l < currentLine.length(); l++) {
-					if (currentLine.charAt(l) == 'U') {
+					if(currentLine.charAt(l) == 'U'){
 						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
+					}
+					else if (currentLine.charAt(l) == 'U') {
+						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
+						//System.out.println("hi");
 					} else if (currentLine.charAt(l) == 'B')
 						elements.add(new BlockRevamp(this, (tileSize * l), (tileSize * (h))));
 				}

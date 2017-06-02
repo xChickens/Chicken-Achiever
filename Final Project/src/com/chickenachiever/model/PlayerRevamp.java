@@ -201,7 +201,7 @@ public class PlayerRevamp extends MapElementRevamp {
 		return alive;
 	}
 	
-	/*public Corpse spawnCorpse(){
+	public Corpse spawnCorpse(){
 		return new Corpse(tileMap,this);
-	}*/
+	}
 }

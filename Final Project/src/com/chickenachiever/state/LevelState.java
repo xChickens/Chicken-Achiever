@@ -174,7 +174,7 @@ public class LevelState extends GameState {
 			deathCount++;
 			achieve.setPropValue("dieOneTime", deathCount);
 			
-			corpses.add(player.spawnCorpse());
+			//corpses.add(player.spawnCorpse());
 			//player.respawn();
 			lifeStart = System.nanoTime() / 1000000;
 		}

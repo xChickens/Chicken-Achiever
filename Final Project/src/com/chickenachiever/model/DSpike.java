@@ -5,25 +5,35 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import com.chickenachiever.map.TileMap;
+import com.chickenachiever.map.TileMapRevamp;
 
-public class DSpike extends MapElement {
+public class DSpike extends MapElementRevamp {
+
 	private ArrayList<BufferedImage[]> sprites;
 	private final int[] numFrames = { 1 };
 	private static final int IDLE = 0;
+	private PlayerRevamp p;
 
-	public DSpike(TileMap tm) {
-		super(tm);
+	public DSpike(TileMapRevamp tm, int x, int y) {
+		super(tm, x, y);
+		cwidth = 10;
+		cheight = 10;
 	}
 
-	public void update(Player p) {
-		if (intersects(p)){
-			p.kill();
+	public void setPlayer(PlayerRevamp p) {
+		this.p = p;
+	}
+
+	public void update() {
+		//System.out.println("hi");
+		if (p != null) {
+			if (intersects(p)) {
+				p.kill();
+			}
 		}
 	}
 
 	public void draw(Graphics2D g2d) {
 	}
-	
-	
-	
+
 }

@@ -102,6 +102,11 @@ public abstract class MapElementRevamp {
 	public void update(){
 	}
 	
+	
+	public void setPlayer(PlayerRevamp p){
+		
+	}
+	
 	protected void updateImage(String path) {
 		image = new ImageIcon(getClass().getResource("/Elements/" + path)).getImage();
 		imageWidth = image.getWidth(null);
@@ -119,12 +124,12 @@ public abstract class MapElementRevamp {
 		int bleft = tileMap.getType(bottomTile, leftTile);
 		int bright = tileMap.getType(bottomTile, rightTile);
 
-		topLeft = (tleft != TileMapRevamp.EMPTY);
-		topRight = (tright != TileMapRevamp.EMPTY);
-		bottomLeft = (bleft != TileMapRevamp.EMPTY);
-		bottomRight = (bright != TileMapRevamp.EMPTY);
+		topLeft = (tleft == TileMapRevamp.BLOCKED);
+		topRight = (tright == TileMapRevamp.BLOCKED);
+		bottomLeft = (bleft == TileMapRevamp.BLOCKED);
+		bottomRight = (bright == TileMapRevamp.BLOCKED);
 	}
-
+	
 	public void checkTileMapCollision() {
 		currCol = (int) x / tileSize;
 		currRow = (int) y / tileSize;
