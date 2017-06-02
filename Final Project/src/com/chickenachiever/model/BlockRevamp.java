@@ -16,7 +16,7 @@ public class BlockRevamp extends MapElementRevamp {
 		super(map, x , y);
 		solid = true;
 		touched = false;
-		updateImage("testblock.png");
+		updateImage("Block.png");
 	}
 
 	public void update() {
