@@ -13,6 +13,7 @@ import com.chickenachiever.map.TileMapRevamp;
 import com.chickenachiever.model.BlockRevamp;
 import com.chickenachiever.model.Corpse;
 import com.chickenachiever.model.DSpike;
+import com.chickenachiever.model.Launcher;
 import com.chickenachiever.model.MapElementRevamp;
 import com.chickenachiever.model.Player;
 import com.chickenachiever.model.PlayerRevamp;
@@ -31,10 +32,10 @@ public class LevelStateRevamp extends GameState {
 	private int spikesTouched;
 	private int launchersTouched;
 	
-	private final int totalBlocks = 100;
-	private final int totalSpikes = 10;
-	private final int totalLaunchers = 8;
-	private int totalAchievements;
+	private final int totalBlocks = 90;
+	private final int totalSpikes = 12;
+	private final int totalLaunchers = 15;
+	private int totalAchievements = 11;
 	
 	private int deathCount;
 	private long lifeStart;
@@ -61,7 +62,7 @@ public class LevelStateRevamp extends GameState {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		player = new PlayerRevamp(tileMap, 100, 100);
+		player = new PlayerRevamp(tileMap, 450, 230);
 		corpses = new ArrayList<Corpse>();
 		achieve = new Achieve();
 		
@@ -116,7 +117,7 @@ public class LevelStateRevamp extends GameState {
 		 * Property[] xlaunchers = {achieve.getProperties().get("xlaunchers")};
 		 * achieve.createAchievement("xlaunchers", xlaunchers);
 		 */
-		/*
+		
 		 achieve.createProperty("fiveLaunchers", 0, achieve.ACTIVE_IF_GREATER, 4); 
 		 Property[] fiveLaunchers = {achieve.getProperties().get("fiveLaunchers")};
 		 achieve.createAchievement("WHEEE!", fiveLaunchers); 
@@ -125,7 +126,7 @@ public class LevelStateRevamp extends GameState {
 		achieve.createProperty("allLaunchers", 0, achieve.ACTIVE_IF_EQUAL, totalLaunchers);
 		Property[] allLaunchers = { achieve.getProperties().get("allLaunchers") };
 		achieve.createAchievement("Chickens can Fly", allLaunchers);
-*/
+
 	
 		//template for dying x times
 		 achieve.createProperty("dieOnce", 0, achieve.ACTIVE_IF_GREATER, 0);
@@ -137,7 +138,7 @@ public class LevelStateRevamp extends GameState {
 		 achieve.createAchievement("Used to It", dieTenTimes);
 		 
 		// all achievements unlocked
-		achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, totalAchievements - 1);
+		achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, totalAchievements);
 		Property[] allAchievements = {achieve.getProperties().get("allUnlocked")};
 		achieve.createAchievement("Caught 'em All", allAchievements);
 		
@@ -180,7 +181,7 @@ public class LevelStateRevamp extends GameState {
 			MapElementRevamp e = objectList.get(count);
 			e.update();
 			//System.out.println(count);
-			if(e instanceof BlockRevamp && ((BlockRevamp) e).isTouched() && !e.checked())
+			if(e instanceof BlockRevamp && e.isTouched() && !e.checked())
 			{
 				blocksTouched++;
 				e.nowChecked();
@@ -194,6 +195,14 @@ public class LevelStateRevamp extends GameState {
 				e.nowChecked();
 				achieve.setPropValue("fiveSpikes", spikesTouched);
 				achieve.setPropValue("allSpikes", spikesTouched);
+			}
+			
+			else if((e instanceof Launcher) && e.isTouched() && !e.checked())
+			{
+				launchersTouched++;
+				e.nowChecked();
+				achieve.setPropValue("fiveLaunchers", launchersTouched);
+				achieve.setPropValue("allLaunchers", launchersTouched);
 			}
 			count++;
 		}
@@ -213,6 +222,7 @@ public class LevelStateRevamp extends GameState {
 		}*/
 		achieve.setPropValue("dieOnce", deathCount);
 		achieve.setPropValue("dieTenTimes", deathCount);
+		achieve.setPropValue("allUnlocked", achieve.checkAchievements().size());
 		
 		
 		for (int i = 0; i < corpses.size(); i++) {

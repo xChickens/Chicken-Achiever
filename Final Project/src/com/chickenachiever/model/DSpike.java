@@ -8,6 +8,8 @@ public class DSpike extends MapElementRevamp {
 
 	public DSpike(TileMapRevamp tm, int x, int y) {
 		super(tm, x, y);
+		cwidth = 20;
+		cheight = 20;
 		updateImage("DSpikes.png");
 	}
 
@@ -19,6 +21,7 @@ public class DSpike extends MapElementRevamp {
 		//System.out.println("hi");
 		if (p != null) {
 			if (intersects(p)) {
+				touched = true;
 				updateImage("DSpikesTouched.png");
 				p.kill();
 			}

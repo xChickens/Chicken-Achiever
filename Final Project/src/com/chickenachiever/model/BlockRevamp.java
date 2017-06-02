@@ -9,14 +9,12 @@ public class BlockRevamp extends MapElementRevamp {
 
 	private static final int UNTOUCHED = 0;
 	private static final int TOUCHED = 1;
-	private boolean touched;
 	private PlayerRevamp p;
 
 	public BlockRevamp(TileMapRevamp map, int x, int y) {
 		super(map, x , y);
 		cwidth = 32;
 		cheight = 32;
-		touched = false;
 		updateImage("Block.png");
 	}
 

@@ -194,7 +194,7 @@ public class PlayerRevamp extends MapElementRevamp {
 
 	public void respawn() {
 		alive = true;
-		this.setPosition(100, 100);
+		this.setPosition(450, 230);
 	}
 
 	public boolean isAlive() {

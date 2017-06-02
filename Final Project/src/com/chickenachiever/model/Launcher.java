@@ -28,7 +28,7 @@ public class Launcher extends MapElementRevamp {
 		if (p != null) {
 			if (intersects(p)) {
 				touched = true;
-				p.dy += -6;
+				p.dy += -2;
 				updateImage("LauncherTouched.png");
 			}
 		}
