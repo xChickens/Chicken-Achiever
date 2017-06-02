@@ -57,7 +57,7 @@ public class TileMapRevamp {
 		for (int h = 0; h < stringList.size(); h++) {
 			String currentLine = stringList.get(h);
 			//System.out.println(h + " "  + currentLine);
-			if (h > 2 && h < 23) {
+			if (h > -1 && h < 23) {
 				for (int l = 0; l < currentLine.length(); l++) {
 					if (currentLine.charAt(l) == 'U') {
 						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
