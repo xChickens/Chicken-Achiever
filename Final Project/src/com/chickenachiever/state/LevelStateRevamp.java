@@ -14,6 +14,7 @@ import com.chickenachiever.model.Corpse;
 import com.chickenachiever.model.MapElementRevamp;
 import com.chickenachiever.model.Player;
 import com.chickenachiever.model.PlayerRevamp;
+import com.chickenachiever.model.USpike;
 
 public class LevelStateRevamp extends GameState {
 
@@ -22,6 +23,7 @@ public class LevelStateRevamp extends GameState {
 	private PlayerRevamp player;
 	private ArrayList<Corpse> corpses;
 	private Achieve achieve;
+	private ArrayList<MapElementRevamp> objectList;
 	
 	private int blocksTouched;
 	private int spikesTouched;
@@ -60,7 +62,15 @@ public class LevelStateRevamp extends GameState {
 		player = new PlayerRevamp(tileMap, 100, 100);
 		corpses = new ArrayList<Corpse>();
 		achieve = new Achieve();
-
+		
+		objectList = tileMap.getElements();
+		int count = 0;
+		while ((objectList != null) && (count < objectList.size())) {
+			MapElementRevamp e = objectList.get(count);
+			e.setPlayer(player);
+			//System.out.println(count);
+			count++;
+		}
 		/* template for touching x blocks
 		 * 	
 		 * 
@@ -154,7 +164,7 @@ public class LevelStateRevamp extends GameState {
 	public void update() {
 		
 		// TODO Auto-generated method stub
-		ArrayList<MapElementRevamp> objectList = tileMap.getElements();
+		objectList = tileMap.getElements();
 		//System.out.println("objectlist size" + objectList.size());
 		
 		currentTime = System.currentTimeMillis()/1000;
@@ -170,12 +180,12 @@ public class LevelStateRevamp extends GameState {
 			count++;
 		}
 		//System.out.println("Count:" + count);
-		
-		player.update();
-		/*if(!player.isAlive()){
+		if(player.isAlive()){
+			player.update();
+		}else if(!player.isAlive()){
 			corpses.add(player.spawnCorpse());
-			//player.respawn();
-		}*/
+			player.respawn();
+		}
 		/*achieve.setPropValue("testproperty", 1);
 		ArrayList<Achievement> achieved = achieve.checkAchievements();
 		for (int i = 0; i < achieved.size(); i++){

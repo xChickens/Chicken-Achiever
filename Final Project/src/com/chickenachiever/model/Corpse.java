@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import com.chickenachiever.map.TileMap;
+import com.chickenachiever.map.TileMapRevamp;
 
-public class Corpse extends Player {
+public class Corpse extends PlayerRevamp {
 
-	private Player player;
+	private PlayerRevamp player;
 	private long spawnTime;
 
-	public Corpse(TileMap map, Player player) {
-		super(map);
+	public Corpse(TileMapRevamp map, PlayerRevamp player) {
+		super(map, player.getx(), player.gety());
 		this.player = player;
 		setPosition(player.getx(), player.gety());
 		dx = player.dx;
@@ -43,7 +44,7 @@ public class Corpse extends Player {
 	
 	protected void loadSprites(){
 		try {
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/playersprites.gif"));
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/Chickenv4.gif"));
 
 			sprites = new ArrayList<BufferedImage[]>();
 			for (int i = 0; i < 4; i++) {
