@@ -38,6 +38,16 @@ public class Button {
 	this.text = text;
 	this.font = font;
     }
+    
+    public Button(int x, int y, int width, int height, String text, Font font, int r, int g, int b) {
+	box = new Rectangle(x, y, width, height);
+	acLs = new ArrayList<ActionListener>();
+	released = new Color(r, g, b);
+	hover = new Color(r - 101, g - 101, b - 101);
+	pressed = new Color(r - 151, g - 151, b - 151);
+	this.text = text;
+	this.font = font;
+    }
 
     public void update() {
 
@@ -55,6 +65,22 @@ public class Button {
 	    g.fill(box);
 	}
 	g.setColor(new Color(0, 255, 0));
+	g.setFont(font);
+	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
+		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
+    }
+    public void draw(Graphics2D g, Color color) {
+	if (currentState == State.RELEASED) {
+	    g.setColor(released);
+	    g.fill(box);
+	} else if (currentState == State.HOVER) {
+	    g.setColor(hover);
+	    g.fill(box);
+	} else {
+	    g.setColor(pressed);
+	    g.fill(box);
+	}
+	g.setColor(color);
 	g.setFont(font);
 	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
 		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
