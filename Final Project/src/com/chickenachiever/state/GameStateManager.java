@@ -3,6 +3,8 @@ package com.chickenachiever.state;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import com.chickenachiever.audio.AudioPlayer;
+
 public class GameStateManager {
 
     private ArrayList<GameState> gameStates;
@@ -12,9 +14,13 @@ public class GameStateManager {
     public static final int CREDITSSTATE = 1;
     public static final int LEVELSTATE = 2;
     public static final int ENDSTATE = 3;
+    
+    private AudioPlayer bgMusic;
 
     public GameStateManager() {
 	gameStates = new ArrayList<GameState>();
+	bgMusic = new AudioPlayer("bgmusic.mp3");
+	bgMusic.play();
 
 	currentState = MENUSTATE;
 	gameStates.add(new MenuState(this));
