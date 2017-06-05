@@ -40,6 +40,7 @@ public class LevelState extends GameState {
 	private long lifeStart;
 	private long gameStart;
 	private long currentTime;
+	private int clicks = 0;
 
 	public LevelState(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -161,6 +162,11 @@ public class LevelState extends GameState {
 		Property[] oneMin = {achieve.getProperties().get("Played for 1min")};
 		achieve.createAchievement("Forgot to Close Game", oneMin);
 		lifeStart = System.currentTimeMillis()/1000;
+		
+		//click achievement
+		achieve.createProperty("clicked", 0, achieve.ACTIVE_IF_EQUAL, 2);
+		Property[] oneClick = {achieve.getProperties().get("clicked")};
+		achieve.createAchievement("Chickens eat Mice", oneClick);
 	}
 
 	@Override
@@ -294,8 +300,10 @@ public class LevelState extends GameState {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		clicks++;
+		if (e.getButton() == MouseEvent.BUTTON1 || e.getButton() == MouseEvent.BUTTON2 ){
+			achieve.setPropValue("clicked", clicks);
+		}
 	}
 
 	@Override
