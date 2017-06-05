@@ -208,7 +208,7 @@ public class LevelState extends GameState {
 	    achieve.createAchievement("Don't Do It", mainMenu);
 
 	    // all achievements unlocked
-	    achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, 2);
+	    achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, achieve.getAchievements().size());
 	    Property[] allAchievements = { achieve.getProperties().get("allUnlocked") };
 	    achieve.createAchievement("Caught 'em All", allAchievements);
 

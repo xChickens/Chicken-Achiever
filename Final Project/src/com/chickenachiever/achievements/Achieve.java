@@ -87,16 +87,16 @@ public class Achieve {
 	int height = 40;
 	for (int i = 0; i < newAchievements.size(); i++) {
 	    String name = newAchievements.get(i).getName();
-	    graph.setColor(new Color(0, 255, 255, 125));
+	    graph.setColor(new Color(0, 255, 255, 175));
 	    // 768 is the bottom of the screen
-	    graph.fillRect(0, 640 - height - (height * i), 400, height);
-	    graph.setColor(new Color(255, 255, 255, 150));
+	    graph.fillRect(0, 640 - height - (height * i), 450, height);
+	    graph.setColor(new Color(255, 255, 255, 200));
 
 	    graph.setFont(new Font("Arial", Font.PLAIN, 28));
 	    FontMetrics metrics = graph.getFontMetrics();
 	    int Swidth = metrics.stringWidth(name + " unlocked!");
 	    int Sheight = metrics.getHeight();
-	    graph.drawString(name + " unlocked!", 0 + (400 / 2) - (Swidth / 2), 645 - height - (height * i) + Sheight / 2 + 5);
+	    graph.drawString(name + " unlocked!", 0 + (450 / 2) - (Swidth / 2), 645 - height - (height * i) + Sheight / 2 + 5);
 	    if (newAchievements.get(i).timeSinceAchieved() > 5000) {
 		newAchievements.remove(i);
 		i--;
