@@ -201,6 +201,11 @@ public class LevelState extends GameState {
 	    achieve.createProperty("secondSpace", 0, achieve.ACTIVE_IF_EQUAL, 2);
 	    Property[] secondSpace = { achieve.getProperties().get("secondSpace") };
 	    achieve.createAchievement("Tried again, didn't you?", secondSpace);
+	    
+	    //mainmenu hover
+	    achieve.createProperty("main menu", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] mainMenu = { achieve.getProperties().get("main menu") };
+	    achieve.createAchievement("Don't Do It", mainMenu);
 
 	    // all achievements unlocked
 	    achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, achieve.getAchievements().size());
@@ -374,14 +379,18 @@ public class LevelState extends GameState {
 
     public void mouseDragged(MouseEvent e) {
 	for (Button b : buttons)
+	{
 	    b.mouseDragged(e);
+	    
+	}
 		
     }
 
     public void mouseMoved(MouseEvent e) {
 	for (Button b : buttons)
-	    if (b.mouseMoved(e))
-		achieve.setPropValue("pls", clicks);;
+	    if (b.mouseMoved(e)){
+		achieve.setPropValue("main menu", 1);
+	    }
     }
 
     public void mouseReleased(MouseEvent e) {
