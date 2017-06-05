@@ -35,7 +35,7 @@ public class Player extends MapElement {
 		stopJumpSpeed = 0.3;
 
 		facingRight = true;
-		loadSprites("Chicken.gif");
+		loadSprites("ChickenSet.gif");
 		animation = new Animation();
 		currentAction = IDLE;
 		if(animation == null){
