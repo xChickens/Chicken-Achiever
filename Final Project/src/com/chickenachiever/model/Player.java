@@ -104,8 +104,6 @@ public class Player extends MapElement {
 
 	public void draw(Graphics2D g) {
 
-		// if (alive) {
-
 		setMapPosition();
 		// draw player
 		if (facingRight) {
@@ -116,9 +114,6 @@ public class Player extends MapElement {
 			g.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), null);
 		}
 
-		g.drawRect((int) (x - cwidth / 2), (int) (y - cwidth / 2), cwidth, cheight);
-		
-		// }
 	}
 
 	private void getNextPosition() {

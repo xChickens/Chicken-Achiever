@@ -98,9 +98,6 @@ public abstract class MapElement {
 		int xCoord = (int)((x + (width / 2)));
 		int yCoord = (int)((y + (height / 2)));
 		g.drawImage(image, xCoord, yCoord, null);
-
-		// Comment this out if you want invisible hitboxes
-		g.drawRect((int) (x), (int) (y), cwidth, cheight);
 	}
 
 	public void update(){
