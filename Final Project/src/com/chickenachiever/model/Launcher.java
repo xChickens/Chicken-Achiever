@@ -1,7 +1,5 @@
 package com.chickenachiever.model;
 
-import java.awt.Graphics2D;
-
 import com.chickenachiever.map.TileMap;
 
 public class Launcher extends MapElement {
@@ -31,8 +29,4 @@ public class Launcher extends MapElement {
 	}
 
     }
-
-    public void draw(Graphics2D g2d) {
-    }
-
 }

@@ -19,9 +19,6 @@ public class Achievement {
 	return null;
     }
 
-    /*
-     * public void setUnlocked() { unlocked = true; }
-     */
     public boolean getUnlocked() {
 	return unlocked;
     }

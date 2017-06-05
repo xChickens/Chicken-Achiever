@@ -15,148 +15,146 @@ import javax.swing.JPanel;
 import com.chickenachiever.state.GameStateManager;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener, MouseListener, MouseMotionListener {
-	/**
-     * 
-     */
-	private static final long serialVersionUID = 1L;
 
-	// Dimensions
-	public static final int WIDTH = 598;
-	public static final int HEIGHT = 320;
-	public static final int PWIDTH = 448;
-	public static final int PHEIGHT = 320;
-	public static final int SCALE = 2;
+    private static final long serialVersionUID = 1L;
 
-	// Thread
-	private Thread thread;
-	private boolean running;
-	private int FPS = 60;
-	private long targetTime = 1000 / FPS;
+    // Dimensions
+    public static final int WIDTH = 598;
+    public static final int HEIGHT = 320;
+    public static final int PWIDTH = 448;
+    public static final int PHEIGHT = 320;
+    public static final int SCALE = 2;
 
-	// Images
-	private BufferedImage image;
-	private Graphics2D g;
+    // Thread
+    private Thread thread;
+    private boolean running;
+    private int FPS = 60;
+    private long targetTime = 1000 / FPS;
 
-	// GSM
-	private GameStateManager gsm;
+    // Images
+    private BufferedImage image;
+    private Graphics2D g;
 
-	public void addNotify() {
-		super.addNotify();
-		if (thread == null) {
-			thread = new Thread(this);
-			addKeyListener(this);
-			addMouseListener(this);
-			addMouseMotionListener(this);
-			thread.start();
-		}
+    // GSM
+    private GameStateManager gsm;
+
+    public void addNotify() {
+	super.addNotify();
+	if (thread == null) {
+	    thread = new Thread(this);
+	    addKeyListener(this);
+	    addMouseListener(this);
+	    addMouseMotionListener(this);
+	    thread.start();
 	}
+    }
 
-	private void init() {
-		image = new BufferedImage(WIDTH * SCALE, HEIGHT * SCALE, BufferedImage.TYPE_INT_RGB);
+    private void init() {
+	image = new BufferedImage(WIDTH * SCALE, HEIGHT * SCALE, BufferedImage.TYPE_INT_RGB);
 
-		g = ((Graphics2D) image.getGraphics());
+	g = ((Graphics2D) image.getGraphics());
 
-		running = true;
+	running = true;
 
-		gsm = new GameStateManager();
-	}
+	gsm = new GameStateManager();
+    }
 
-	public void run() {
-		init();
+    public void run() {
+	init();
 
-		long start;
-		long elapsed;
-		long wait;
+	long start;
+	long elapsed;
+	long wait;
 
-		// Game Loop
-		while (running) {
+	// Game Loop
+	while (running) {
 
-			start = System.nanoTime();
+	    start = System.nanoTime();
 
-			update();
-			draw();
-			drawToScreen();
+	    update();
+	    draw();
+	    drawToScreen();
 
-			elapsed = System.nanoTime() - start;
+	    elapsed = System.nanoTime() - start;
 
 	    wait = targetTime - elapsed / 1000000;
-			if (wait < 0)
-				wait = 5;
+	    if (wait < 0)
+		wait = 5;
 
-			try {
-				Thread.sleep(wait);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
+	    try {
+		Thread.sleep(wait);
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
 	}
 
-	private void update() {
-		gsm.update();
-	}
+    }
 
-	public GamePanel() {
-		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-		setFocusable(true);
-		requestFocus();
-	}
+    private void update() {
+	gsm.update();
+    }
 
-	private void draw() {
-		gsm.draw(g);
-	}
+    public GamePanel() {
+	setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+	setFocusable(true);
+	requestFocus();
+    }
 
-	private void drawToScreen() {
-		Graphics g2 = getGraphics();
-		g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
-		g2.dispose();
-	}
+    private void draw() {
+	gsm.draw(g);
+    }
 
-	public void keyTyped(KeyEvent key) {
-	}
+    private void drawToScreen() {
+	Graphics g2 = getGraphics();
+	g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
+	g2.dispose();
+    }
 
-	public void keyPressed(KeyEvent key) {
-		if (gsm != null)
-			gsm.keyPressed(key.getKeyCode());
-	}
+    public void keyTyped(KeyEvent key) {
+    }
 
-	public void keyReleased(KeyEvent key) {
-		if (gsm != null)
-			gsm.keyReleased(key.getKeyCode());
-	}
+    public void keyPressed(KeyEvent key) {
+	if (gsm != null)
+	    gsm.keyPressed(key.getKeyCode());
+    }
 
-	public void mouseDragged(MouseEvent e) {
-		if (gsm != null)
-			gsm.mouseDragged(e);
+    public void keyReleased(KeyEvent key) {
+	if (gsm != null)
+	    gsm.keyReleased(key.getKeyCode());
+    }
 
-	}
+    public void mouseDragged(MouseEvent e) {
+	if (gsm != null)
+	    gsm.mouseDragged(e);
 
-	public void mouseMoved(MouseEvent e) {
-		if (gsm != null)
-			gsm.mouseMoved(e);
+    }
 
-	}
+    public void mouseMoved(MouseEvent e) {
+	if (gsm != null)
+	    gsm.mouseMoved(e);
 
-	public void mouseClicked(MouseEvent e) {
-		if (gsm != null)
-			gsm.mouseClicked(e);
+    }
 
-	}
+    public void mouseClicked(MouseEvent e) {
+	if (gsm != null)
+	    gsm.mouseClicked(e);
 
-	public void mouseEntered(MouseEvent e) {
-	}
+    }
 
-	public void mouseExited(MouseEvent e) {
-	}
+    public void mouseEntered(MouseEvent e) {
+    }
 
-	public void mousePressed(MouseEvent e) {
-		if (gsm != null)
-			gsm.mouseDragged(e);
-	}
+    public void mouseExited(MouseEvent e) {
+    }
 
-	public void mouseReleased(MouseEvent e) {
-		if (gsm != null)
-			gsm.mouseReleased(e);
+    public void mousePressed(MouseEvent e) {
+	if (gsm != null)
+	    gsm.mouseDragged(e);
+    }
 
-	}
+    public void mouseReleased(MouseEvent e) {
+	if (gsm != null)
+	    gsm.mouseReleased(e);
+
+    }
 }

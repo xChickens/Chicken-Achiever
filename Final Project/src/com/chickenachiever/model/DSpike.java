@@ -18,7 +18,6 @@ public class DSpike extends MapElement {
     }
 
     public void update() {
-	// System.out.println("hi");
 	if (p != null) {
 	    if (intersects(p)) {
 		touched = true;

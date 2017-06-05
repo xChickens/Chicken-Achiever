@@ -255,8 +255,4 @@ public abstract class MapElement {
     public boolean checked() {
 	return checked;
     }
-    // public boolean onScreen() {
-    // return x + xmap + width < 0 || x + xmap - width > GamePanel.WIDTH || y +
-    // ymap + height < 0 || y + ymap - height > GamePanel.HEIGHT;
-    // }
 }

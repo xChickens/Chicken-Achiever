@@ -76,7 +76,7 @@ public class Achieve {
 	return unlocked;
     }
 
-    public void drawOnPlayableArea(Graphics2D graph, ArrayList<Achievement> Achievements){
+    public void drawOnPlayableArea(Graphics2D graph, ArrayList<Achievement> Achievements) {
 	ArrayList<Achievement> newAchievements = new ArrayList<Achievement>();
 	for (int i = 0; i < Achievements.size(); i++) {
 	    if (Achievements.get(i).timeSinceAchieved() < 5000) {
@@ -113,7 +113,7 @@ public class Achieve {
 	int i = 0;
 	// try something
 	Iterator<Achievement> iter = myAchievementList.iterator();
-	while (iter.hasNext() ) {
+	while (iter.hasNext()) {
 	    String name = iter.next().name;
 	    if (myAchievements.get(name).getUnlocked()) {
 		// graph.drawRect(850,300,200,200);//i just put in random
@@ -142,5 +142,4 @@ public class Achieve {
 	}
     }
 
-    /* add a method to update an array of properties, if needed */
 }

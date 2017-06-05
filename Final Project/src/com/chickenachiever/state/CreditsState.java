@@ -23,7 +23,7 @@ public class CreditsState extends GameState {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
-	buttons = new ArrayList<Button>(); 
+	buttons = new ArrayList<Button>();
 	buttons.add(new Button(48, 520, 1100, 100, "Main Menu"));
 	buttons.get(0).addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
@@ -41,34 +41,34 @@ public class CreditsState extends GameState {
 
     public void draw(Graphics2D g) {
 	bg.draw(g);
-	for (Button b: buttons)
+	for (Button b : buttons)
 	    b.draw(g);
     }
 
     public void mouseClicked(MouseEvent e) {
-	for (Button b: buttons)
+	for (Button b : buttons)
 	    b.mouseClicked(e);
     }
 
     public void mouseDragged(MouseEvent e) {
-	for (Button b: buttons)
+	for (Button b : buttons)
 	    b.mouseDragged(e);
     }
 
     public void mouseMoved(MouseEvent e) {
-	for (Button b: buttons)
+	for (Button b : buttons)
 	    b.mouseMoved(e);
     }
 
     public void mouseReleased(MouseEvent e) {
-	for (Button b: buttons)
+	for (Button b : buttons)
 	    b.mouseReleased(e);
     }
-    
-	public void keyReleased(int k) {
-	}
 
-	public void keyPressed(int k) {
-	}
+    public void keyReleased(int k) {
+    }
+
+    public void keyPressed(int k) {
+    }
 
 }

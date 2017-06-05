@@ -38,7 +38,7 @@ public class Button {
 	this.text = text;
 	this.font = font;
     }
-    
+
     public Button(int x, int y, int width, int height, String text, Font font, int r, int g, int b) {
 	box = new Rectangle(x, y, width, height);
 	acLs = new ArrayList<ActionListener>();
@@ -66,9 +66,9 @@ public class Button {
 	}
 	g.setColor(new Color(0, 255, 0));
 	g.setFont(font);
-	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
-		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
+	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2), box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
     }
+
     public void draw(Graphics2D g, Color color) {
 	if (currentState == State.RELEASED) {
 	    g.setColor(released);
@@ -82,8 +82,7 @@ public class Button {
 	}
 	g.setColor(color);
 	g.setFont(font);
-	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2),
-		box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
+	g.drawString(text, box.x + box.width / 2 - (int) (g.getFontMetrics().getStringBounds(text, g).getWidth() / 2), box.y + box.height / 2 + (int) (new TextLayout(text, font, g.getFontRenderContext()).getBounds().getHeight() / 3));
     }
 
     public void addActionListener(ActionListener listener) {
@@ -107,11 +106,12 @@ public class Button {
     }
 
     public boolean mouseMoved(MouseEvent e) {
-	if (box.contains(e.getPoint()))
+	if (box.contains(e.getPoint())) {
 	    currentState = State.HOVER;
-	else
+	    return true;
+	} else
 	    currentState = State.RELEASED;
-	return true;
+	return false;
     }
 
     public void mouseReleased(MouseEvent e) {

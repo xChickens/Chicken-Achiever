@@ -27,7 +27,6 @@ public class Corpse extends Player {
     }
 
     public void draw(Graphics2D graph) {
-	// if (((System.nanoTime()*1000000) - spawnTime) < 10000) {
 
 	setMapPosition();
 	// draw player
@@ -38,7 +37,6 @@ public class Corpse extends Player {
 	} else {// facing left
 	    graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap + height / 2 + 10), width, -height, null);
 	}
-	// }
     }
 
     public int timeSinceSpawned() {
