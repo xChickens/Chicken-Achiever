@@ -79,9 +79,9 @@ public abstract class MapElement {
 		tileSize = tm.getTileSize();
 	}
 
-	public boolean intersects(MapElement e) {
+	public boolean intersects(Player p) {
 		Rectangle r1 = getRectangle();
-		Rectangle r2 = e.getRectangle(cwidth, cheight);
+		Rectangle r2 = p.getRectangle(cwidth, cheight);
 		return r1.intersects(r2);
 
 	}
