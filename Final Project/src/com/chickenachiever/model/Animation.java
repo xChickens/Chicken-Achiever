@@ -46,6 +46,10 @@ public class Animation {
 	public BufferedImage getImage() {
 		return frames[currentFrame];
 	}
+	
+	public BufferedImage getNthImage(int x){
+		return frames[x];
+	}
 
 	public boolean hasPlayedOnce() {
 		return playedOnce;
