@@ -106,11 +106,12 @@ public class Button {
 	    currentState = State.RELEASED;
     }
 
-    public void mouseMoved(MouseEvent e) {
+    public boolean mouseMoved(MouseEvent e) {
 	if (box.contains(e.getPoint()))
 	    currentState = State.HOVER;
 	else
 	    currentState = State.RELEASED;
+	return true;
     }
 
     public void mouseReleased(MouseEvent e) {

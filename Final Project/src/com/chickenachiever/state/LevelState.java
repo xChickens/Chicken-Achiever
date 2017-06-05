@@ -165,7 +165,6 @@ public class LevelState extends GameState {
 	    Property[] tenSecondsAlive = { achieve.getProperties().get("10sec Alive") };
 	    achieve.createAchievement("Stayin' Alive", tenSecondsAlive);
 
-
 	    achieve.createProperty("Played for 1min", 0, achieve.ACTIVE_IF_GREATER, 59);
 	    Property[] oneMin = { achieve.getProperties().get("Played for 1min") };
 	    achieve.createAchievement("Forgot to Close Game", oneMin);
@@ -177,6 +176,11 @@ public class LevelState extends GameState {
 	    achieve.createAchievement("Chickens eat Mice", oneClick);
 
 	    // colorize
+
+	    achieve.createProperty("normal", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] normal = { achieve.getProperties().get("normal") };
+	    achieve.createAchievement("Back to Normal", normal);
+
 	    achieve.createProperty("red", 0, achieve.ACTIVE_IF_EQUAL, 1);
 	    Property[] red = { achieve.getProperties().get("red") };
 	    achieve.createAchievement("Red Meat vs Poultry", red);
@@ -188,19 +192,14 @@ public class LevelState extends GameState {
 	    achieve.createProperty("blue", 0, achieve.ACTIVE_IF_EQUAL, 1);
 	    Property[] blue = { achieve.getProperties().get("blue") };
 	    achieve.createAchievement("Picasso", blue);
-	    
-	    achieve.createProperty("normal", 0, achieve.ACTIVE_IF_EQUAL, 1);
-	    Property[] normal = { achieve.getProperties().get("normal") };
-	    achieve.createAchievement("Back to Normal", normal);
-	    
-	    
-	    //spacebar
+
+	    // spacebar
 	    achieve.createProperty("spacebar", 0, achieve.ACTIVE_IF_EQUAL, 1);
-	    Property[] spacebar = {achieve.getProperties().get("spacebar")};
+	    Property[] spacebar = { achieve.getProperties().get("spacebar") };
 	    achieve.createAchievement("Total Confusion", spacebar);
-	    
+
 	    achieve.createProperty("secondSpace", 0, achieve.ACTIVE_IF_EQUAL, 2);
-	    Property[] secondSpace = {achieve.getProperties().get("secondSpace")};
+	    Property[] secondSpace = { achieve.getProperties().get("secondSpace") };
 	    achieve.createAchievement("Tried again, didn't you?", secondSpace);
 
 	    // all achievements unlocked
@@ -213,10 +212,8 @@ public class LevelState extends GameState {
 
     }
 
-    @Override
     public void update() {
 
-	// TODO Auto-generated method stub
 	objectList = tileMap.getElements();
 	// System.out.println("objectlist size" + objectList.size());
 
@@ -289,7 +286,7 @@ public class LevelState extends GameState {
     }
 
     public void draw(Graphics2D g) {
-	// TODO Auto-generated method stub
+
 	g.setColor(Color.BLUE);
 	g.fillRect(0, 0, GamePanel.WIDTH * GamePanel.SCALE, GamePanel.HEIGHT * GamePanel.SCALE);
 	g.setColor(Color.WHITE);
@@ -314,7 +311,6 @@ public class LevelState extends GameState {
     }
 
     public void keyPressed(int k) {
-	// TODO Auto-generated method stub
 
 	if (k == KeyEvent.VK_LEFT) {
 	    player.setLeft(true);
@@ -344,18 +340,17 @@ public class LevelState extends GameState {
 	    player.loadSprites("BlueChickenSet.gif");
 	    achieve.setPropValue("blue", 1);
 	}
-	if (k == KeyEvent.VK_SPACE){
-		if(achieve.getPropValue("spacebar") == 0)
-				achieve.setPropValue("spacebar", 1);
-		else
-			achieve.setPropValue("secondSpace", 2);
+	if (k == KeyEvent.VK_SPACE) {
+	    if (achieve.getPropValue("spacebar") == 0)
+		achieve.setPropValue("spacebar", 1);
+	    else
+		achieve.setPropValue("secondSpace", 2);
 	}
-	
+
     }
 
-    @Override
     public void keyReleased(int k) {
-	// TODO Auto-generated method stub
+
 	if (k == KeyEvent.VK_LEFT) {
 	    player.setLeft(false);
 	}
@@ -368,7 +363,6 @@ public class LevelState extends GameState {
 
     }
 
-    @Override
     public void mouseClicked(MouseEvent e) {
 	clicks++;
 	if (e.getButton() == MouseEvent.BUTTON1 || e.getButton() == MouseEvent.BUTTON2) {
@@ -380,7 +374,8 @@ public class LevelState extends GameState {
 
     public void mouseDragged(MouseEvent e) {
 	for (Button b : buttons)
-	    b.mouseDragged(e);
+	    if (b.mouseDragged(e))
+		;
     }
 
     public void mouseMoved(MouseEvent e) {
