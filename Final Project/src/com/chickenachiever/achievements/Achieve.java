@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.TreeMap;
 
 public class Achieve {
 
@@ -15,11 +16,13 @@ public class Achieve {
     public final String ACTIVE_IF_LESS = "<";
 
     private HashMap<String, Property> myProperties;
-    private HashMap<String, Achievement> myAchievements;
+    private TreeMap<String, Achievement> myAchievements;
+    private ArrayList<Achievement> myAchievementList;
 
     public Achieve() {
 	myProperties = new HashMap<String, Property>();
-	myAchievements = new HashMap<String, Achievement>();
+	myAchievements = new TreeMap<String, Achievement>();
+	myAchievementList = new ArrayList<Achievement>();
 	/*
 	 * createProperty("testproperty",1,ACTIVE_IF_EQUAL,1); Property[]
 	 * testarray= {myProperties.get("testproperty")};
@@ -36,7 +39,7 @@ public class Achieve {
 	return myProperties;
     }
 
-    public HashMap<String, Achievement> getAchievements() {
+    public TreeMap<String, Achievement> getAchievements() {
 	return myAchievements;
     }
 
@@ -46,6 +49,7 @@ public class Achieve {
 
     public void createAchievement(String name, Property[] props) {
 	myAchievements.put(name, new Achievement(name, props));
+	myAchievementList.add(myAchievements.get(name));
     }
 
     public int getPropValue(String name) {
@@ -107,9 +111,10 @@ public class Achieve {
 	// draw achievements beginning at position x: x = 720
 	int height = 30;
 	int i = 0;
-	Iterator<String> iter = myAchievements.keySet().iterator();
-	while (iter.hasNext()) {
-	    String name = iter.next();
+	// try something
+	Iterator<Achievement> iter = myAchievementList.iterator();
+	while (iter.hasNext() ) {
+	    String name = iter.next().name;
 	    if (myAchievements.get(name).getUnlocked()) {
 		// graph.drawRect(850,300,200,200);//i just put in random
 		// position numbers for now
