@@ -268,6 +268,12 @@ public class LevelStateRevamp extends GameState {
 		if (k == KeyEvent.VK_UP) {
 			player.setJumping(true);
 		}
+		if (k == KeyEvent.VK_UP) {
+			player.setJumping(true);
+		}
+		if (k == KeyEvent.VK_1) {
+			player.setJumping(true);
+		}
 	}
 
 	@Override
