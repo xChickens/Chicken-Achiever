@@ -37,11 +37,8 @@ public class Player extends MapElement {
 
 	facingRight = true;
 	loadSprites("ChickenSet.gif");
-	animation = new Animation();
 	currentAction = IDLE;
-	if (animation == null) {
-	    System.out.println("hi");
-	}
+	animation = new Animation();
 	animation.setFrames(sprites.get(IDLE));
 	animation.setDelay(400);
 	alive = true;
@@ -166,7 +163,7 @@ public class Player extends MapElement {
 	}
     }
 
-    protected void loadSprites(String spriteset) {
+    public void loadSprites(String spriteset) {
 	try {
 	    BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/" + spriteset));
 
@@ -175,9 +172,9 @@ public class Player extends MapElement {
 		BufferedImage[] images = new BufferedImage[numFrames[i]];
 		for (int j = 0; j < images.length; j++) {
 		    if (i == 3) {
-			images[j] = loadSprites.getSubimage(j * (width + 10), 5 + (i * height), width + 10, height);
+			images[j] = loadSprites.getSubimage(j * (32 + 10), 5 + (i * height), 32 + 10, height);
 		    } else {
-			images[j] = loadSprites.getSubimage(5 + j * width, 5 + i * height, width, height);
+			images[j] = loadSprites.getSubimage(5 + j * 32, 5 + i * height, 32, height);
 		    }
 		}
 		sprites.add(images);
