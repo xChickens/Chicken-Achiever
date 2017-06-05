@@ -65,7 +65,6 @@ public class LevelState extends GameState {
 
     public void init() {
 	if (init == 0) {
-		
 	    deathCount = 0;
 	    lifeStart = System.currentTimeMillis() / 1000;
 	    gameStart = System.currentTimeMillis() / 1000;
