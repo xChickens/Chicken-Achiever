@@ -17,6 +17,7 @@ public class Player extends MapElement {
 	protected static final int JUMPING = 2;
 	protected static final int FALLING = 3;
 	private boolean alive;
+	private String spriteset;
 
 	public Player(TileMap map, int x , int y) {
 		super(map, x, y); // set tile map and tile size
@@ -102,18 +103,20 @@ public class Player extends MapElement {
 
 	}
 
-	public void draw(Graphics2D g) {
+	public void draw(Graphics2D graph) {
+
+		// if (alive) {
 
 		setMapPosition();
 		// draw player
 		if (facingRight) {
-			g.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap - height / 2), -width, height, null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap - height / 2), -width, height, null);
 			
 			// change the input based on the position of the image
 		} else {// facing left
-			g.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap - height / 2), null);
 		}
-
+		// }
 	}
 
 	private void getNextPosition() {
@@ -196,6 +199,10 @@ public class Player extends MapElement {
 
 	public boolean isAlive() {
 		return alive;
+	}
+	
+	public void colorChange(Player p, String colorset){
+		//p = new Player
 	}
 	
 	public Corpse spawnCorpse(){

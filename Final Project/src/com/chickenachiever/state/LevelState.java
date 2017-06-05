@@ -34,7 +34,7 @@ public class LevelState extends GameState {
 	private final int totalBlocks = 90;
 	private final int totalSpikes = 12;
 	private final int totalLaunchers = 15;
-	private int totalAchievements = 11;
+	private int totalAchievements = 12;
 	
 	private int deathCount;
 	private long lifeStart;
@@ -279,7 +279,7 @@ public class LevelState extends GameState {
 			player.setJumping(true);
 		}
 		if (k == KeyEvent.VK_1) {
-			player.setJumping(true);
+			//player.loadSprites("RedChickenSet");
 		}
 	}
 
