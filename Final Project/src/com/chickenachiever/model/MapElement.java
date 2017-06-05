@@ -81,24 +81,17 @@ public abstract class MapElement {
 
 	public boolean intersects(MapElement e) {
 		Rectangle r1 = getRectangle();
-		Rectangle r2 = e.getRectangle();
-		return r1.intersects(r2);
-
-	}
-
-	public boolean intersects(MapElement e, int cwidth, int cheight) {
-		Rectangle r1 = getRectangle(cwidth, cheight);
-		Rectangle r2 = e.getRectangle();
+		Rectangle r2 = e.getRectangle(cwidth, cheight);
 		return r1.intersects(r2);
 
 	}
 
 	public Rectangle getRectangle() {
-		return new Rectangle((int) (x - cwidth), (int) (y - cheight), cwidth, cheight);
+		return new Rectangle((int) (x), (int) (y), cwidth, cheight);
 	}
 	
 	public Rectangle getRectangle(int cwidth, int cheight) {
-		return new Rectangle((int) x - cwidth, (int) y - cheight, cwidth, cheight);
+		return new Rectangle((int) x - cwidth / 2, (int) y - cheight / 2, cwidth, cheight);
 	}
 	
 	public void draw(Graphics g) {
@@ -107,7 +100,7 @@ public abstract class MapElement {
 		g.drawImage(image, xCoord, yCoord, null);
 
 		// Comment this out if you want invisible hitboxes
-		//g.drawRect((int) x, (int) y, width, height);
+		g.drawRect((int) (x), (int) (y), cwidth, cheight);
 	}
 
 	public void update(){

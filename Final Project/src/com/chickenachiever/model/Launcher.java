@@ -11,8 +11,8 @@ public class Launcher extends MapElement {
 	public Launcher(TileMap tm, int x, int y) {
 		super(tm, x, y);
 		updateImage("Launcher.png");
-		cwidth = 10;
-		cheight = 10;
+		cwidth = 32;
+		cheight = 32;
 	}
 
 	public void setPlayer(Player p) {
@@ -23,6 +23,8 @@ public class Launcher extends MapElement {
 		if (p != null) {
 			if (intersects(p)) {
 				touched = true;
+				if (p.dy > -2)
+				    p.dy += -5;
 				p.dy += -2;
 				updateImage("LauncherTouched.png");
 			}

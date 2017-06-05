@@ -32,11 +32,11 @@ public class Corpse extends Player {
 	    	setMapPosition();
 		// draw player
 		if (facingRight) {
-			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap + height / 2), -width, -height, null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2) + width, (int) (y + ymap + height / 2 + 10), -width, -height, null);
 			
 			// change the input based on the position of the image
 		} else {// facing left
-			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap + height / 2), width, -height, null);
+			graph.drawImage(animation.getImage(), (int) (x + xmap - width / 2), (int) (y + ymap + height / 2 + 10), width, -height, null);
 		}
 		//}
 	}

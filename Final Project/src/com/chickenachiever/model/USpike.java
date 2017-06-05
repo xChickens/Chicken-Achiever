@@ -8,8 +8,8 @@ public class USpike extends MapElement {
 
 	public USpike(TileMap tm, int x, int y) {
 		super(tm, x, y);
-		cwidth = 10;
-		cheight = 10;
+		cwidth = 32;
+		cheight = 32;
 		updateImage("USpikes.png");
 	}
 
