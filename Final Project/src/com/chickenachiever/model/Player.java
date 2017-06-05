@@ -17,7 +17,6 @@ public class Player extends MapElement {
     protected static final int JUMPING = 2;
     protected static final int FALLING = 3;
     private boolean alive;
-    private String spriteset;
 
     public Player(TileMap map, int x, int y) {
 	super(map, x, y); // set tile map and tile size
