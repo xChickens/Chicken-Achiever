@@ -1,31 +1,29 @@
 package com.chickenachiever.model;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
 import com.chickenachiever.map.TileMap;
 
 public class Block extends MapElement {
 
-	private ArrayList<BufferedImage[]> sprites;
-	private static final int UNTOUCHED = 0;
-	private static final int TOUCHED = 1;
-	private boolean touched = false;
+	private Player p;
 
-	public Block(TileMap map) {
-		super(map);
+	public Block(TileMap map, int x, int y) {
+		super(map, x , y);
+		cwidth = 32;
+		cheight = 32;
+		updateImage("Block.png");
+	}
+
+	public void setPlayer(Player p) {
+		this.p = p;
 	}
 
 	public void update() {
-		calculateCorners(x,y);
-		if(topLeft || topRight || bottomLeft || bottomRight){
-			if(touched == false){
+		if (p != null) {
+			if (intersects(p) && touched == false) {
+				updateImage("BlockTouched.png");
 				touched = true;
 			}
 		}
 	}
-
-	public void draw(Graphics2D graph) {
-	}
+	
 }

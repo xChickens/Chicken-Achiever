@@ -18,24 +18,24 @@ public class Player extends MapElement {
 	protected static final int FALLING = 3;
 	private boolean alive;
 
-	public Player(TileMap map) {
-		super(map); // set tile map and tile size
+	public Player(TileMap map, int x , int y) {
+		super(map, x, y); // set tile map and tile size
 
 		width = 32;// need to figure out the size of the sprites
 		height = 34;
-		cwidth = 25;
+		cwidth = 28;
 		cheight = 30;
 
 		moveSpeed = 0.7;
-		maxSpeed = 1.6;
+		maxSpeed = 3;
 		stopSpeed = 0.4;
-		fallSpeed = 0.15;
+		fallSpeed = 0.5;
 		maxFallSpeed = 4.0;
-		jumpStart = -4.8;
+		jumpStart = -15;
 		stopJumpSpeed = 0.3;
 
 		facingRight = true;
-		loadSprites();
+		loadSprites("Chicken.gif");
 		animation = new Animation();
 		currentAction = IDLE;
 		if(animation == null){
@@ -46,7 +46,7 @@ public class Player extends MapElement {
 		alive = true;
 
 	}
-
+	
 	public void update() {
 
 		// update position
@@ -164,12 +164,12 @@ public class Player extends MapElement {
 			}
 		}
 	}
-	protected void loadSprites(){
+	protected void loadSprites(String spriteset){
 		try {
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/Chickenv4.gif"));
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/"+ spriteset));
 
 			sprites = new ArrayList<BufferedImage[]>();
-			for (int i = 0; i < 4; i++) { 
+			for (int i = 0; i < 4; i++) {
 				BufferedImage[] images = new BufferedImage[numFrames[i]];
 				for (int j = 0; j < images.length; j++) {
 					if (i == 3){
@@ -193,14 +193,14 @@ public class Player extends MapElement {
 
 	public void respawn() {
 		alive = true;
-		this.setPosition(100, 100);
+		this.setPosition(450, 230);
 	}
 
 	public boolean isAlive() {
 		return alive;
 	}
 	
-	/*public Corpse spawnCorpse(){
+	public Corpse spawnCorpse(){
 		return new Corpse(tileMap,this);
-	}*/
+	}
 }

@@ -1,26 +1,21 @@
 package com.chickenachiever.model;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
-import com.chickenachiever.map.TileMapRevamp;
+import com.chickenachiever.map.TileMap;
 
-public class Launcher extends MapElementRevamp {
+public class Launcher extends MapElement {
 
-	private ArrayList<BufferedImage[]> sprites;
-	private final int[] numFrames = { 1 };
-	private static final int IDLE = 0;
-	private PlayerRevamp p;
+	private Player p;
 
-	public Launcher(TileMapRevamp tm, int x, int y) {
+	public Launcher(TileMap tm, int x, int y) {
 		super(tm, x, y);
 		updateImage("Launcher.png");
 		cwidth = 10;
 		cheight = 10;
 	}
 
-	public void setPlayer(PlayerRevamp p) {
+	public void setPlayer(Player p) {
 		this.p = p;
 	}
 

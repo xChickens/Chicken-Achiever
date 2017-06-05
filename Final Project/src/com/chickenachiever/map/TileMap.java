@@ -1,15 +1,22 @@
 package com.chickenachiever.map;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import com.chickenachiever.main.GamePanel;
+import com.chickenachiever.model.Block;
+import com.chickenachiever.model.DSpike;
+import com.chickenachiever.model.Launcher;
+import com.chickenachiever.model.MapElement;
+import com.chickenachiever.model.USpike;
 
 public class TileMap {
 
+	public static final char BLOCKED = 'B';// representation of empty space in map
+	
 	// Position
 	private double x;
 	private double y;
@@ -21,7 +28,7 @@ public class TileMap {
 	private int ymax;
 
 	// Map
-	private int[][] map;
+	ArrayList<String> map;
 	private int tileSize;
 	private int numRows;
 	private int numCols;
@@ -29,70 +36,69 @@ public class TileMap {
 	private int height;
 
 	// Tileset
-	private BufferedImage tileset;
-	private int numTilesAcross;
-	private Tile[][] tiles;
-
-	// Drawing
-	private int rowOffset;
-	private int colOffset;
-	private int numRowsToDraw;
-	private int numColsToDraw;
+	private ArrayList<MapElement> elements;
 
 	public TileMap(int tileSize) {
+		elements = new ArrayList<MapElement>();
 		this.tileSize = tileSize;
-		numRowsToDraw = (GamePanel.PHEIGHT/ tileSize) * GamePanel.SCALE;
-		numColsToDraw = (GamePanel.PWIDTH / tileSize) * GamePanel.SCALE;
 	}
 
-	public void loadTiles(BufferedImage i) {
-		try {
-			tileset = i;
-			numTilesAcross = (tileset.getWidth() / tileSize);
-			tiles = new Tile[2][numTilesAcross];
-			for (int col = 0; col < numTilesAcross; col++) {
-				BufferedImage subimage = tileset.getSubimage(col * tileSize, 0, tileSize, tileSize);
-
-				tiles[0][col] = new Tile(subimage, 0);
-				subimage = tileset.getSubimage(col * tileSize, tileSize, tileSize, tileSize);
-
-				tiles[1][col] = new Tile(subimage, 1);
+	public void loadTiles(String s) {
+		//break down the file outlining the map and translate it into blocks
+		ArrayList<String> stringList = loadMap(s);
+		for (int h = 0; h < stringList.size(); h++) {
+			String currentLine = stringList.get(h);
+			//System.out.println(h + " "  + currentLine);
+			if (h > -1 && h < 23) {
+				for (int l = 0; l < currentLine.length(); l++) {
+					if(currentLine.charAt(l) == 'D'){
+						elements.add(new DSpike(this,(tileSize*l),(tileSize*h)));
+					}
+					else if (currentLine.charAt(l) == 'U') 
+						elements.add(new USpike(this,(tileSize*l),(tileSize*h)));
+						else if (currentLine.charAt(l) == 'B')
+						elements.add(new Block(this, (tileSize * l), (tileSize * (h))));
+					else if (currentLine.charAt(l) == 'L') 
+						elements.add(new Launcher(this,(tileSize*l),(tileSize*h)));
+				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
-	public void loadMap(String s) {
+	public ArrayList<String> loadMap(String s) {
+		//read in the file outlining the map
+		map = new ArrayList<String>();
 		try {
 			InputStream in = getClass().getResourceAsStream(s);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
-			map = new int[numRows][numCols];
 			width = (numCols * tileSize);
 			height = (numRows * tileSize);
 
-			xmin = (GamePanel.PWIDTH  - width);
+			xmin = (GamePanel.PWIDTH - width);
 			xmax = 0;
 			ymin = (GamePanel.PHEIGHT - height);
 			ymax = 0;
 
-			String delims = "\\s+";
-			for (int row = 0; row < numRows; row++) {
-				String line = br.readLine();
-				String[] tokens = line.split(delims);
-				for (int col = 0; col < numCols; col++) {
-					map[row][col] = Integer.parseInt(tokens[col]);
-				}
+			String line;
+			while ((line = br.readLine()) != null){
+				map.add(line);
 			}
+			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return map;
 	}
 
 	public int getTileSize() {
 		return tileSize;
+	}
+
+	public void addElement(MapElement e) {
+		elements.add(e);
 	}
 
 	public int getx() {
@@ -103,6 +109,11 @@ public class TileMap {
 		return (int) y;
 	}
 
+	public ArrayList<MapElement> getElements(){
+		//System.out.println("element size" + elements.size());
+		return elements;
+	}
+	
 	public int getWidth() {
 		return width;
 	}
@@ -111,11 +122,8 @@ public class TileMap {
 		return height;
 	}
 
-	public int getType(int row, int col) {
-		int rc = map[row][col];
-		int r = rc / numTilesAcross;
-		int c = rc % numTilesAcross;
-		return tiles[r][c].getType();
+	public int getType(int row, int col) {// returns the type of element
+		return map.get(row).charAt(col);
 	}
 
 	public void setPosition(double x, double y) {
@@ -123,9 +131,6 @@ public class TileMap {
 		this.y += (y - this.y);
 
 		fixBounds();
-
-		colOffset = ((int) -this.x / tileSize);
-		rowOffset = ((int) -this.y / tileSize);
 	}
 
 	private void fixBounds() {
@@ -144,21 +149,12 @@ public class TileMap {
 	}
 
 	public void draw(Graphics2D g2) {
-		for (int row = rowOffset; row < rowOffset + numRowsToDraw; row++) {
-			if (row >= numRows) {
-				break;
-			}
-			for (int col = colOffset; col < colOffset + numColsToDraw; col++) {
-				if (col >= numCols) {
-					break;
-				}
-				if (map[row][col] != 0) {
-					int rc = map[row][col];
-					int r = rc / numTilesAcross;
-					int c = rc % numTilesAcross;
-
-					g2.drawImage(tiles[r][c].getImage(), (int) x + col * tileSize, (int) y + row * tileSize, null);
-				}
+		for (int i = 0; i < elements.size(); i++){
+			try{
+			elements.get(i).draw(g2);
+			//System.out.println(eleme.getx());
+			}catch(Exception f){
+				f.printStackTrace();
 			}
 		}
 	}

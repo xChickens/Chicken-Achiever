@@ -1,6 +1,5 @@
 package com.chickenachiever.state;
 
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-import com.chickenachiever.main.GamePanel;
 import com.chickenachiever.map.Background;
 import com.chickenachiever.map.Button;
 

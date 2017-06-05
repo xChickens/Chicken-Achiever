@@ -1,9 +1,11 @@
 package com.chickenachiever.model;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 
-import com.chickenachiever.main.GamePanel;
-import com.chickenachiever.map.Tile;
+import javax.swing.ImageIcon;
+
 import com.chickenachiever.map.TileMap;
 
 public abstract class MapElement {
@@ -17,10 +19,12 @@ public abstract class MapElement {
 	// Position
 	protected double x;
 	protected double y;
-	protected double dx;
-	protected double dy;
+	public double dx;
+	public double dy;
 
 	// Dimensions
+	protected int imageWidth;
+	protected int imageHeight;
 	protected int width;
 	protected int height;
 
@@ -39,6 +43,8 @@ public abstract class MapElement {
 	protected boolean topRight;
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
+	protected boolean touched;
+	protected boolean checked = false;
 
 	// Animation
 	protected Animation animation;
@@ -62,8 +68,13 @@ public abstract class MapElement {
 	protected double maxFallSpeed;
 	protected double jumpStart;
 	protected double stopJumpSpeed;
+	
+	//image
+	protected Image image;
 
-	public MapElement(TileMap tm) {
+	public MapElement(TileMap tm, int x, int y) {
+		this.x = x;
+		this.y = y;
 		tileMap = tm;
 		tileSize = tm.getTileSize();
 	}
@@ -75,27 +86,61 @@ public abstract class MapElement {
 
 	}
 
-	public Rectangle getRectangle() {
-		return new Rectangle((int) x - cwidth, (int) y - cheight, cwidth, cheight);
+	public boolean intersects(MapElement e, int cwidth, int cheight) {
+		Rectangle r1 = getRectangle(cwidth, cheight);
+		Rectangle r2 = e.getRectangle();
+		return r1.intersects(r2);
+
 	}
 
+	public Rectangle getRectangle() {
+		return new Rectangle((int) (x - cwidth), (int) (y - cheight), cwidth, cheight);
+	}
+	
+	public Rectangle getRectangle(int cwidth, int cheight) {
+		return new Rectangle((int) x - cwidth, (int) y - cheight, cwidth, cheight);
+	}
+	
+	public void draw(Graphics g) {
+		int xCoord = (int)((x + (width / 2)));
+		int yCoord = (int)((y + (height / 2)));
+		g.drawImage(image, xCoord, yCoord, null);
+
+		// Comment this out if you want invisible hitboxes
+		//g.drawRect((int) x, (int) y, width, height);
+	}
+
+	public void update(){
+	}
+	
+	
+	public void setPlayer(Player p){
+		
+	}
+	
+	protected void updateImage(String path) {
+		image = new ImageIcon(getClass().getResource("/Elements/" + path)).getImage();
+		imageWidth = image.getWidth(null);
+		imageHeight = image.getHeight(null);
+	}
+	
 	public void calculateCorners(double x, double y) {
 		int leftTile = (int) (x - cwidth / 2) / tileSize;
 		int rightTile = (int) (x + cwidth / 2 - 1) / tileSize;
 		int topTile = (int) (y - cheight / 2) / tileSize;
 		int bottomTile = (int) (y + cheight / 2 - 1) / tileSize;
 
-		int tleft = tileMap.getType(topTile, leftTile);
+		int tleft = tileMap.getType(topTile, leftTile);//find out what type of block it is
 		int tright = tileMap.getType(topTile, rightTile);
 		int bleft = tileMap.getType(bottomTile, leftTile);
 		int bright = tileMap.getType(bottomTile, rightTile);
 
-		topLeft = tleft == Tile.BLOCKED;
-		topRight = tright == Tile.BLOCKED;
-		bottomLeft = bleft == Tile.BLOCKED;
-		bottomRight = bright == Tile.BLOCKED;
+		topLeft = (tleft == TileMap.BLOCKED);
+		topRight = (tright == TileMap.BLOCKED);
+		bottomLeft = (bleft == TileMap.BLOCKED);
+		bottomRight = (bright == TileMap.BLOCKED);
 	}
-
+	
 	public void checkTileMapCollision() {
 		currCol = (int) x / tileSize;
 		currRow = (int) y / tileSize;
@@ -209,6 +254,17 @@ public abstract class MapElement {
 		this.jumping = b;
 	}
 
+	public boolean isTouched() {
+		return touched;
+	}
+
+	public void nowChecked(){
+		checked = true;
+	}
+	
+	public boolean checked(){
+		return checked;
+	}
 	// public boolean onScreen() {
 	// return x + xmap + width < 0 || x + xmap - width > GamePanel.WIDTH || y +
 	// ymap + height < 0 || y + ymap - height > GamePanel.HEIGHT;

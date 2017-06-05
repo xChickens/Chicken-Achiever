@@ -1,22 +1,15 @@
 package com.chickenachiever.model;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 
 import com.chickenachiever.map.TileMap;
-import com.chickenachiever.map.TileMapRevamp;
 
-public class Corpse extends PlayerRevamp {
+public class Corpse extends Player {
 
-	private PlayerRevamp player;
 	private long spawnTime;
 
-	public Corpse(TileMapRevamp map, PlayerRevamp player) {
+	public Corpse(TileMap map, Player player) {
 		super(map, player.getx(), player.gety());
-		this.player = player;
 		setPosition(player.getx(), player.gety());
 		dx = player.dx;
 		dy = player.dy;

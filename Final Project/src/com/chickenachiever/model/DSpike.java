@@ -1,19 +1,19 @@
 package com.chickenachiever.model;
 
-import com.chickenachiever.map.TileMapRevamp;
+import com.chickenachiever.map.TileMap;
 
-public class DSpike extends MapElementRevamp {
+public class DSpike extends MapElement {
 
-	private PlayerRevamp p;
+	private Player p;
 
-	public DSpike(TileMapRevamp tm, int x, int y) {
+	public DSpike(TileMap tm, int x, int y) {
 		super(tm, x, y);
 		cwidth = 20;
 		cheight = 20;
 		updateImage("DSpikes.png");
 	}
 
-	public void setPlayer(PlayerRevamp p) {
+	public void setPlayer(Player p) {
 		this.p = p;
 	}
 
