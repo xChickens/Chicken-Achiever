@@ -16,7 +16,7 @@ public class Corpse extends Player {
 		facingRight = player.facingRight;
 		jumping = player.jumping;
 		falling = player.falling;
-		loadSprites("DeadChickens.gif");
+		loadSprites("DeadChicken.gif");
 		
 		spawnTime = System.nanoTime()/1000000;
 		
