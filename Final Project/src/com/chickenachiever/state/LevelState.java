@@ -374,13 +374,14 @@ public class LevelState extends GameState {
 
     public void mouseDragged(MouseEvent e) {
 	for (Button b : buttons)
-	    if (b.mouseDragged(e))
-		;
+	    b.mouseDragged(e);
+		
     }
 
     public void mouseMoved(MouseEvent e) {
 	for (Button b : buttons)
-	    b.mouseMoved(e);
+	    if (b.mouseMoved(e))
+		achieve.setPropValue("pls", clicks);;
     }
 
     public void mouseReleased(MouseEvent e) {
