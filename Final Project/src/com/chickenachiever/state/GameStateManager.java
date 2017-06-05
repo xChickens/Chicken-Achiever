@@ -3,7 +3,7 @@ package com.chickenachiever.state;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import com.chickenachiever.audio.AudioPlayer;
+import com.chickenachiever.audio.JukeBox;
 
 public class GameStateManager {
 
@@ -15,12 +15,11 @@ public class GameStateManager {
     public static final int LEVELSTATE = 2;
     public static final int ENDSTATE = 3;
     
-    private AudioPlayer bgMusic;
-
     public GameStateManager() {
 	gameStates = new ArrayList<GameState>();
-	bgMusic = new AudioPlayer("bgmusic.mp3");
-	bgMusic.play();
+	JukeBox.init();
+	JukeBox.load("/Music/bgmusic.wav", "/Music/bgmusic.wav");
+	JukeBox.loop("/Music/bgmusic.wav");
 
 	currentState = MENUSTATE;
 	gameStates.add(new MenuState(this));

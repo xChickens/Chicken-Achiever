@@ -201,14 +201,14 @@ public class LevelState extends GameState {
 	    achieve.createProperty("secondSpace", 0, achieve.ACTIVE_IF_EQUAL, 2);
 	    Property[] secondSpace = { achieve.getProperties().get("secondSpace") };
 	    achieve.createAchievement("Tried again, didn't you?", secondSpace);
-	    
-	    //mainmenu hover
+
+	    // mainmenu hover
 	    achieve.createProperty("main menu", 0, achieve.ACTIVE_IF_EQUAL, 1);
 	    Property[] mainMenu = { achieve.getProperties().get("main menu") };
 	    achieve.createAchievement("Don't Do It", mainMenu);
 
 	    // all achievements unlocked
-	    achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, achieve.getAchievements().size());
+	    achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, 2);
 	    Property[] allAchievements = { achieve.getProperties().get("allUnlocked") };
 	    achieve.createAchievement("Caught 'em All", allAchievements);
 
@@ -275,7 +275,7 @@ public class LevelState extends GameState {
 	if (achieve.getAchievements().get("Caught 'em All").getUnlocked()) {
 	    if (wait == 0) {
 		wait = currentTime;
-	    } else if (currentTime - wait == 6)
+	    } else if (currentTime - wait == 20)
 		gsm.setState(3);
 
 	}
@@ -312,6 +312,53 @@ public class LevelState extends GameState {
 
 	}
 	achieve.draw(g);
+	if (currentTime - wait > 11) {
+
+	}
+
+	if (currentTime - wait > 3 && wait != 0) {
+	    g.setColor(new Color(255, 255, 255, 225));
+	    g.fillRect(0, 0, GamePanel.WIDTH * GamePanel.SCALE, GamePanel.HEIGHT * GamePanel.SCALE);
+	    if (currentTime - wait > 5) {
+		g.setColor(new Color(0, 0, 0, 225));
+		g.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		g.drawString("Congratulations! You won!", 50, 75);
+		if (currentTime - wait > 7) {
+		    g.drawString("The game was pretty short wasn't it?", 50, 130);
+		    if (currentTime - wait > 9) {
+			g.drawString("You won in " + (wait - gameStart) + " seconds", 50, 185);
+			if (currentTime - wait > 11) {
+			    if (wait - gameStart > 60) {
+				if (wait - gameStart > 120) {
+				    if (wait - gameStart > 180) {
+					g.drawString("Really bad to be honest.", 50, 240);
+					if (currentTime - wait > 13)
+					    g.drawString("I don't think you should play again.", 50, 290);
+				    } else {
+					g.drawString("Pretty sucky.", 50, 240);
+					if (currentTime - wait > 13)
+					    g.drawString("One more try.", 50, 290);
+				    }
+				} else {
+				    g.drawString("Average I guess.", 50, 240);
+				    if (currentTime - wait > 13)
+					g.drawString("Try harder next time.", 50, 290);
+				}
+			    } else {
+
+				g.drawString("Haha, I couldn't even get this time.", 50, 240);
+				if (currentTime - wait > 13)
+				    g.drawString("Congrats. You're a speed demon.", 50, 290);
+			    }
+			    if (currentTime - wait > 15) {
+				g.drawString("Waiting for the end screen...", 50, 600);
+			    }
+			}
+		    }
+		}
+	    }
+
+	}
 
     }
 
@@ -373,22 +420,23 @@ public class LevelState extends GameState {
 	if (e.getButton() == MouseEvent.BUTTON1 || e.getButton() == MouseEvent.BUTTON2) {
 	    achieve.setPropValue("clicked", clicks);
 	}
-	for (Button b : buttons)
-	    b.mouseClicked(e);
+	if (wait == 0) {
+	    for (Button b : buttons)
+		b.mouseClicked(e);
+	}
     }
 
     public void mouseDragged(MouseEvent e) {
-	for (Button b : buttons)
-	{
+	for (Button b : buttons) {
 	    b.mouseDragged(e);
-	    
+
 	}
-		
+
     }
 
     public void mouseMoved(MouseEvent e) {
 	for (Button b : buttons)
-	    if (b.mouseMoved(e)){
+	    if (b.mouseMoved(e)) {
 		achieve.setPropValue("main menu", 1);
 	    }
     }
