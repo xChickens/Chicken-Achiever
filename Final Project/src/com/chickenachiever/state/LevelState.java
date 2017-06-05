@@ -165,9 +165,6 @@ public class LevelState extends GameState {
 	    Property[] tenSecondsAlive = { achieve.getProperties().get("10sec Alive") };
 	    achieve.createAchievement("Stayin' Alive", tenSecondsAlive);
 
-	    achieve.createProperty("30sec Alive", 0, achieve.ACTIVE_IF_GREATER, 29);
-	    Property[] sixtySecondsAlive = { achieve.getProperties().get("30sec Alive") };
-	    achieve.createAchievement("Old Mother Hen", sixtySecondsAlive);
 
 	    achieve.createProperty("Played for 1min", 0, achieve.ACTIVE_IF_GREATER, 59);
 	    Property[] oneMin = { achieve.getProperties().get("Played for 1min") };
@@ -191,6 +188,10 @@ public class LevelState extends GameState {
 	    achieve.createProperty("blue", 0, achieve.ACTIVE_IF_EQUAL, 1);
 	    Property[] blue = { achieve.getProperties().get("blue") };
 	    achieve.createAchievement("Picasso", blue);
+	    
+	    achieve.createProperty("normal", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] normal = { achieve.getProperties().get("normal") };
+	    achieve.createAchievement("Back to Normal", normal);
 	    
 	    
 	    //spacebar
@@ -222,7 +223,6 @@ public class LevelState extends GameState {
 	currentTime = System.currentTimeMillis() / 1000;
 	achieve.setPropValue("10sec Alive", (int) (currentTime - lifeStart));
 	achieve.setPropValue("Played for 1min", (int) (currentTime - gameStart));
-	achieve.setPropValue("30sec Alive", (int) (currentTime - lifeStart));
 
 	int count = 0;
 	while ((objectList != null) && (count < objectList.size())) {
@@ -330,6 +330,7 @@ public class LevelState extends GameState {
 	}
 	if (k == KeyEvent.VK_1) {
 	    player.loadSprites("ChickenSet.gif");
+	    achieve.setPropValue("normal", 1);
 	}
 	if (k == KeyEvent.VK_2) {
 	    player.loadSprites("RedChickenSet.gif");
