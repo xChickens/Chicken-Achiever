@@ -191,6 +191,16 @@ public class LevelState extends GameState {
 	    achieve.createProperty("blue", 0, achieve.ACTIVE_IF_EQUAL, 1);
 	    Property[] blue = { achieve.getProperties().get("blue") };
 	    achieve.createAchievement("Picasso", blue);
+	    
+	    
+	    //spacebar
+	    achieve.createProperty("spacebar", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] spacebar = {achieve.getProperties().get("spacebar")};
+	    achieve.createAchievement("Total Confusion", spacebar);
+	    
+	    achieve.createProperty("secondSpace", 0, achieve.ACTIVE_IF_EQUAL, 2);
+	    Property[] secondSpace = {achieve.getProperties().get("secondSpace")};
+	    achieve.createAchievement("Tried again, didn't you?", secondSpace);
 
 	    // all achievements unlocked
 	    achieve.createProperty("allUnlocked", 0, achieve.ACTIVE_IF_EQUAL, achieve.getAchievements().size());
@@ -320,7 +330,6 @@ public class LevelState extends GameState {
 	}
 	if (k == KeyEvent.VK_1) {
 	    player.loadSprites("ChickenSet.gif");
-	    achieve.setPropValue("blue", 1);
 	}
 	if (k == KeyEvent.VK_2) {
 	    player.loadSprites("RedChickenSet.gif");
@@ -334,7 +343,13 @@ public class LevelState extends GameState {
 	    player.loadSprites("BlueChickenSet.gif");
 	    achieve.setPropValue("blue", 1);
 	}
-
+	if (k == KeyEvent.VK_SPACE){
+		if(achieve.getPropValue("spacebar") == 0)
+				achieve.setPropValue("spacebar", 1);
+		else
+			achieve.setPropValue("secondSpace", 2);
+	}
+	
     }
 
     @Override
