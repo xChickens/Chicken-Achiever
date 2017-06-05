@@ -238,8 +238,10 @@ public class LevelStateRevamp extends GameState {
 
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
-		g.setColor(Color.WHITE);
+		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, GamePanel.WIDTH * GamePanel.SCALE, GamePanel.HEIGHT * GamePanel.SCALE);
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, GamePanel.PWIDTH * GamePanel.SCALE, GamePanel.PHEIGHT * GamePanel.SCALE);
 
 		tileMap.draw(g);
 		player.draw(g);

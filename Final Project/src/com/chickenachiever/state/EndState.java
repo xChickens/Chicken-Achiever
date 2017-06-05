@@ -1,62 +1,76 @@
 package com.chickenachiever.state;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+import com.chickenachiever.main.GamePanel;
+import com.chickenachiever.map.Background;
+import com.chickenachiever.map.Button;
 
 public class EndState extends GameState {
+    private Background bg;
+    private ImageIcon i = new ImageIcon(getClass().getResource("/Backgrounds/WinScreen.png"));
+    private ArrayList<Button> buttons;
 
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-
+    public EndState(GameStateManager gsm) {
+	this.gsm = gsm;
+	try {
+	    this.bg = new Background(this.i);
+	} catch (Exception e) {
+	    e.printStackTrace();
 	}
+	buttons = new ArrayList<Button>(); 
+	buttons.add(new Button(48, 550, 400, 70, "Main Menu"));
+	buttons.get(0).addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		gsm.setState(0);
+	    }
+	});
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+    }
 
-	}
+    public void init() {
+    }
 
-	@Override
-	public void draw(Graphics2D g) {
-		// TODO Auto-generated method stub
+    public void update() {
+    }
 
-	}
+    public void draw(Graphics2D g) {
+	bg.draw(g);
+	for (Button b: buttons)
+	    b.draw(g);
+    }
 
-	@Override
-	public void keyPressed(int k) {
-		// TODO Auto-generated method stub
+    public void mouseClicked(MouseEvent e) {
+	for (Button b: buttons)
+	    b.mouseClicked(e);
+    }
 
-	}
+    public void mouseDragged(MouseEvent e) {
+	for (Button b: buttons)
+	    b.mouseDragged(e);
+    }
 
-	@Override
+    public void mouseMoved(MouseEvent e) {
+	for (Button b: buttons)
+	    b.mouseMoved(e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+	for (Button b: buttons)
+	    b.mouseReleased(e);
+    }
+    
 	public void keyReleased(int k) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+	public void keyPressed(int k) {
 	}
 
 }

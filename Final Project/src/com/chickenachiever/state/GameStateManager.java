@@ -19,6 +19,7 @@ public class GameStateManager{
 	gameStates.add(new MenuState(this));
 	gameStates.add(new CreditsState(this));
 	gameStates.add(new LevelStateRevamp(this));
+	gameStates.add(new EndState(this));
     }
 
     public void setState(int state) {

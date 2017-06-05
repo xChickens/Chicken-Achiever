@@ -21,7 +21,7 @@ public class CreditsState extends GameState {
     public CreditsState(GameStateManager gsm) {
 	this.gsm = gsm;
 	try {
-	    this.bg = new Background(this.i, 1.0D);
+	    this.bg = new Background(this.i);
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

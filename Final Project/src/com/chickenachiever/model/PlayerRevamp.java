@@ -32,11 +32,11 @@ public class PlayerRevamp extends MapElementRevamp {
 		stopSpeed = 0.4;
 		fallSpeed = 0.5;
 		maxFallSpeed = 4.0;
-		jumpStart = -9;
+		jumpStart = -15;
 		stopJumpSpeed = 0.3;
 
 		facingRight = true;
-		loadSprites();
+		loadSprites("Chicken.gif");
 		animation = new Animation();
 		currentAction = IDLE;
 		if(animation == null){
@@ -165,9 +165,9 @@ public class PlayerRevamp extends MapElementRevamp {
 			}
 		}
 	}
-	protected void loadSprites(){
+	protected void loadSprites(String spriteset){
 		try {
-			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/Chickenv4.gif"));
+			BufferedImage loadSprites = ImageIO.read(getClass().getResourceAsStream("/Elements/"+ spriteset));
 
 			sprites = new ArrayList<BufferedImage[]>();
 			for (int i = 0; i < 4; i++) {

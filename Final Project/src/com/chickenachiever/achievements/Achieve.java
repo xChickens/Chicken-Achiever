@@ -82,16 +82,16 @@ public class Achieve {
 		int height = 40;
 		for (int i = 0; i < newAchievements.size(); i++){
 			String name = newAchievements.get(i).getName();
-			graph.setColor(new Color(0, 0, 0, 60));
+			graph.setColor(new Color(0, 255, 255, 125));
 			//768 is the bottom of the screen
 			graph.fillRect(0,640-height- (height*i), 400,  height);
-			graph.setColor(new Color(0, 255, 0, 90));
+			graph.setColor(new Color(255, 255, 255, 150));
 			
-			graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
+			graph.setFont(new Font("Arial",Font.PLAIN,28));
 			FontMetrics metrics = graph.getFontMetrics();
 			int Swidth = metrics.stringWidth(name + " unlocked!");
 			int Sheight = metrics.getHeight();
-			graph.drawString(name + " unlocked!", 0 + (400/2) - (Swidth/2), 640-height - (height*i)+Sheight/2+5);
+			graph.drawString(name + " unlocked!", 0 + (400/2) - (Swidth/2), 645-height - (height*i)+Sheight/2+5);
 			if(newAchievements.get(i).timeSinceAchieved() > 5000){
 				newAchievements.remove(i);
 				i--;
@@ -110,22 +110,22 @@ public class Achieve {
 			String name = iter.next();
 			if(myAchievements.get(name).getUnlocked()){
 				//graph.drawRect(850,300,200,200);//i just put in random position numbers for now
-				graph.setColor(Color.BLACK);
+				graph.setColor(Color.CYAN);
 				graph.fillRect(895,0+ (height*i), 320,  height);
-				graph.setColor(Color.GREEN);
+				graph.setColor(Color.WHITE);
 				
-				graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
+				graph.setFont(new Font("Arial",Font.PLAIN,28));
 				FontMetrics metrics = graph.getFontMetrics();
 				int width = metrics.stringWidth(name);
 				graph.drawString(name, 895 + (320/2) - (width/2), (height*i) + 50/2);
 				
 			}
 			else{
-				graph.setColor(Color.GRAY);
+				graph.setColor(new Color(0, 178, 178));
 				graph.fillRect(895,0+ (height*i), 320,  height);
-				graph.setColor(Color.GREEN);
+				graph.setColor(Color.WHITE);
 				
-				graph.setFont(new Font("Comic Sans MS",Font.PLAIN,30));
+				graph.setFont(new Font("Arial",Font.PLAIN,28));
 				FontMetrics metrics = graph.getFontMetrics();
 				int width = metrics.stringWidth(name);
 				graph.drawString(name, 895 +(320/2) - (width/2), (height*i) + 50/2);

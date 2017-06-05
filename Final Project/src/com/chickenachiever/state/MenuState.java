@@ -21,7 +21,7 @@ public class MenuState extends GameState {
 	public MenuState(GameStateManager gsm) {
 		this.gsm = gsm;
 		try {
-			this.bg = new Background(this.i, 1.0D);
+			this.bg = new Background(this.i);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -37,7 +37,7 @@ public class MenuState extends GameState {
 		});
 		buttons.get(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gsm.setState(1);
+				gsm.setState(3);
 			}
 		});
 		buttons.get(2).addActionListener(new ActionListener() {
