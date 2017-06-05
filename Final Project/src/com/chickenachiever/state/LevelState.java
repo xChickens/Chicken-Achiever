@@ -184,6 +184,22 @@ public class LevelState extends GameState {
 	    Property[] allAchievements = { achieve.getProperties().get("allUnlocked") };
 	    achieve.createAchievement("Caught 'em All", allAchievements);
 
+	    //colorize
+	    achieve.createProperty("red", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] red = { achieve.getProperties().get("red") };
+	    achieve.createAchievement("Red Meat vs Poultry", red);
+	    
+	    achieve.createProperty("green", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] green = { achieve.getProperties().get("green") };
+	    achieve.createAchievement("Rancid Chicken", green);
+	    
+	    
+	    achieve.createProperty("blue", 0, achieve.ACTIVE_IF_EQUAL, 1);
+	    Property[] blue = { achieve.getProperties().get("blue") };
+	    achieve.createAchievement("Picasso", blue);
+	   
+	    
+	    
 	    init++;
 	}
 
@@ -306,8 +322,17 @@ public class LevelState extends GameState {
 	    player.setJumping(true);
 	}
 	if (k == KeyEvent.VK_1) {
-	    // player.loadSprites("RedChickenSet");
+	   player.loadSprites("RedChickenSet.gif");
+	   achieve.setPropValue("red", 1);
 	}
+	if (k == KeyEvent.VK_2) {
+		   player.loadSprites("GreenChickenSet.gif");
+		   achieve.setPropValue("green", 1);
+		}
+	if (k == KeyEvent.VK_3) {
+		   player.loadSprites("BlueChickenSet.gif");
+		   achieve.setPropValue("blue", 1);
+		}
     }
 
     @Override
