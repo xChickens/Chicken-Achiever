@@ -52,7 +52,7 @@ public class Achieve {
 	}
 	
 	public void setPropValue(String name, int val){
-		myProperties.get(name).setValue(val);
+	myProperties.get(name).setValue(val);
 	}
 	
 	public ArrayList<Achievement> checkAchievements(){//returns array of newly achieved achievements

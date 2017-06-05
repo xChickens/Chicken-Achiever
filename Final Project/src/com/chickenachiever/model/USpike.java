@@ -4,27 +4,27 @@ import com.chickenachiever.map.TileMap;
 
 public class USpike extends MapElement {
 
-	private Player p;
+    private Player p;
 
-	public USpike(TileMap tm, int x, int y) {
-		super(tm, x, y);
-		cwidth = 32;
-		cheight = 32;
-		updateImage("USpikes.png");
-	}
+    public USpike(TileMap tm, int x, int y) {
+	super(tm, x, y);
+	cwidth = 32;
+	cheight = 32;
+	updateImage("USpikes.png");
+    }
 
-	public void setPlayer(Player p) {
-		this.p = p;
-	}
+    public void setPlayer(Player p) {
+	this.p = p;
+    }
 
-	public void update() {
-		if (p != null) {
-			if (intersects(p)) {
-				touched = true;
-				updateImage("USpikesTouched.png");
-				p.kill();
-			}
-		}
+    public void update() {
+	if (p != null) {
+	    if (intersects(p)) {
+		touched = true;
+		updateImage("USpikesTouched.png");
+		p.kill();
+	    }
 	}
-	
+    }
+
 }

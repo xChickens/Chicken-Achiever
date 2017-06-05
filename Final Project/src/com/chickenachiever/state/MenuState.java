@@ -36,8 +36,8 @@ public class MenuState extends GameState {
 			}
 		});
 		buttons.get(1).addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				gsm.setState(1);
+	    public void actionPerformed(ActionEvent e) {
+		gsm.setState(1);
 			}
 		});
 		buttons.get(2).addActionListener(new ActionListener() {
